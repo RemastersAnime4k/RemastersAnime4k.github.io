@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
- <a href="https://remasterizadoranime4k.github.io/RemastersAnime4k/" target="blank">
+ <a href="https://remastersanime4k.github.io/" target="blank">
   <img src="https://img.shields.io/badge/Web_Anime-ff69b4?style=for-the-badge&logo=react&logoColor=white" alt="Sitio Web" />
  </a>
  <a href="https://www.youtube.com/@Remastersanime4k" target="_blank">
