@@ -1,5 +1,40 @@
 [
   {
+    "title": "Pikadon Sensei",
+    "image": "https://i.pinimg.com/736x/59/41/71/594171e058f92b12511af567cf029580.jpg",
+    "categories": ["manga"],
+    "url": "https://remastersanime4k.github.io/Pikadon%20sensei.html",
+    "description": "Pikadon Sensei muestra a un maestro amnésico por la bomba atómica que busca recuperar su memoria."
+  },
+  {
+    "title": "Nasubi Joou",
+    "image": "https://i.pinimg.com/736x/5e/fd/ca/5efdcab45b6b30df98ea7246730543b7.jpg",
+    "categories": ["manga"],
+    "url": "https://remastersanime4k.github.io/Nasubi%20Joou.html",
+    "description": "Nasubi Joou sigue a tres amigas: Nasubi, convertida en princesa mágica; Takako, bailarina; y Fujiko, su apoyo."
+  },
+  {
+    "title": "21 no Shimon",
+    "image": "https://i.pinimg.com/736x/75/c8/6e/75c86e748a1ca46016b398434397cd4e.jpg",
+    "categories": ["manga"],
+    "url": "https://remastersanime4k.github.io/21%20no%20Shimon.html",
+    "description": "21 no Shimon sigue el misterio de 21 huellas en una escena del crimen. Manga de Yoshihiro Tatsumi."
+  },
+  {
+    "title": "Mohican-zoku no Saigo",
+    "image": "https://i.pinimg.com/736x/0b/e0/d9/0be0d9eba94237bcef3f793e584436cd.jpg",
+    "categories": ["manga"],
+    "url": "https://remastersanime4k.github.io/Mohican-zoku%20no%20Saigo.html",
+    "description": "Mohican-zoku no Saigo es la parodia cómica de El Último Mohicano por Sugiura Shigeru."
+  },
+  {
+    "title": "Yukai na Hyouryuuki",
+    "image": "https://i.pinimg.com/736x/9c/63/b2/9c63b2a51aa797960b8ddb563dd69019.jpg",
+    "categories": ["manga"],
+    "url": "https://remastersanime4k.github.io/Yukai%20na%20Hyouryuuki.html",
+    "description": "Yukai na Hyouryuuki muestra a un grupo naufragando y sobreviviendo con humor en una isla desierta."
+  },
+  {
     "title": "Shounen Tantei Rock Holmes",
     "image": "https://i.pinimg.com/736x/d4/c1/55/d4c155c0d500dcf0460a314fc28cfcce.jpg",
     "categories": ["manga"],
