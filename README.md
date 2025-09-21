@@ -17,7 +17,7 @@
   <samp>
     「 Creador de una experiencia anime única con ❤️ 」
     <br>
-    「 Donde el anime clásico renace en calidad 4K 」
+    「 Donde el anime clásico renace en calidad 」
   </samp>
 </p>
 
@@ -37,7 +37,7 @@
 ## ✨ Sobre el Proyecto
 
 <p align="left"> 
-  🌸 &emsp; Plataforma para disfrutar de anime clásico y actual en calidad remasterizada<br/><br/>
+  🌸 &emsp; Plataforma para disfrutar de anime clásico y actual en calidad<br/><br/>
   🎨 &emsp; Contenido optimizado visualmente con mejoras de color y resolución<br/><br/>
   🚀 &emsp; Experiencia de visualización fluida con interfaz intuitiva<br/><br/>
   🔒 &emsp; Sistema de anuncios no intrusivo que respeta al usuario
@@ -56,7 +56,7 @@
 
 ## 🌟 Características Destacadas
 
-- 🎬 Catálogo de anime clásico y moderno con remasterización 4K
+- 🎬 Catálogo de anime clásico y moderno
 - ❤️ Interfaz limpia y minimalista enfocada en la experiencia de usuario
 - 🌈 Calidad visual superior a plataformas convencionales
 - 📱 Diseño completamente responsive para cualquier dispositivo
