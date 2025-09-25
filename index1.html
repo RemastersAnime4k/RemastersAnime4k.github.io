@@ -9,7 +9,7 @@
     <meta property="og:type" content="website" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- Fuentes modernas: Satoshi + fallback -->
+    <!-- Fuentes modernas: Satoshi -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="preload" as="style" href="https://api.fontshare.com/css?f[]=satoshi@400,500,700&display=swap" />
     <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=satoshi@400,500,700&display=swap" />
@@ -24,7 +24,6 @@
             --color3: #ffd9cc;
             --color4: #ccfffc;
             --text-color: #2d3436;
-            --bg-light: #ffffff;
             --card-border: rgba(255, 255, 255, 0.18);
             --shadow-light: rgba(0, 0, 0, 0.12);
             --shadow-hover: rgba(0, 0, 0, 0.2);
@@ -38,7 +37,6 @@
                 --color4: #1a2a28;
                 --glass-bg: rgba(30, 30, 40, 0.25);
                 --text-color: #f0f0f0;
-                --bg-light: #121212;
                 --card-border: rgba(255, 255, 255, 0.12);
                 --shadow-light: rgba(0, 0, 0, 0.3);
                 --shadow-hover: rgba(0, 0, 0, 0.4);
@@ -107,7 +105,6 @@
             justify-content: center;
             margin: 0;
             padding: 0;
-            transition: all 0.3s ease;
         }
 
         .nav-links a {
@@ -158,14 +155,13 @@
             background: rgba(255, 255, 255, 0.12);
         }
 
-        /* Grid */
+        /* Grid - SIN contain: strict */
         .anime-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 2rem;
             padding: 1.5rem;
             margin-bottom: 80px;
-            contain: strict;
         }
 
         .anime-card {
@@ -287,7 +283,7 @@
             justify-content: center;
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
@@ -305,7 +301,7 @@
         .back-to-top svg {
             width: 22px;
             height: 22px;
-            stroke: white;
+            stroke: currentColor;
             stroke-width: 2;
             fill: none;
         }
@@ -386,7 +382,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* Estados de carga y mensajes */
         .loading {
             display: none;
             text-align: center;
@@ -403,7 +398,7 @@
             margin-top: 2rem;
         }
 
-        /* Menú móvil */
+        /* Menú móvil - oculto por defecto */
         .menu-toggle {
             display: none;
             background: none;
@@ -411,23 +406,14 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--text-color);
-            padding: 0.5rem;
-            border-radius: 50%;
             width: 42px;
             height: 42px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Scroll-driven fallback */
-        .anime-card,
-        .asd-container {
-            opacity: 0.9;
-            transform: translateY(20px);
-        }
-
-        /* Animaciones */
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
@@ -439,11 +425,8 @@
             100% { transform: scale(1.35); }
         }
 
-        /* Reducción de movimiento */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -465,9 +448,8 @@
             }
 
             .menu-toggle {
-                display: flex;
+                display: flex; /* Solo visible en móvil */
                 margin-left: auto;
-                order: 1;
             }
 
             .nav-links {
@@ -532,7 +514,6 @@
             }
         }
 
-        /* Focus accesible */
         a:focus-visible,
         button:focus-visible,
         input:focus-visible {
@@ -571,7 +552,6 @@
     </button>
 
     <script>
-        // === LÓGICA JS SIN CAMBIOS FUNCIONALES, SOLO MEJORAS MENORES ===
         let currentCategory = 'home';
         let searchTerm = '';
         window.animeData = [];
@@ -751,7 +731,6 @@
             }
         }
 
-        // Event listeners
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -787,7 +766,6 @@
             navLinks.classList.toggle('active');
             menuToggle.textContent = isOpen ? '×' : '☰';
             menuToggle.setAttribute('aria-expanded', isOpen);
-            document.querySelector('.navbar').classList.toggle('active', isOpen);
         });
 
         document.addEventListener('click', (e) => {
@@ -796,7 +774,6 @@
                 navLinks.classList.remove('active');
                 menuToggle.textContent = '☰';
                 menuToggle.setAttribute('aria-expanded', 'false');
-                document.querySelector('.navbar').classList.remove('active');
             }
         });
 
@@ -812,7 +789,6 @@
                     navLinks.classList.remove('active');
                     menuToggle.textContent = '☰';
                     menuToggle.setAttribute('aria-expanded', 'false');
-                    document.querySelector('.navbar').classList.remove('active');
                 }
             }, 50);
         }, { passive: true });
@@ -828,7 +804,6 @@
             }
         });
 
-        // Mobile nav logic (simplified)
         class MobileNavigation {
             constructor() {
                 this.lastScroll = 0;
@@ -862,7 +837,6 @@
             }
         }
 
-        // Init
         document.addEventListener('DOMContentLoaded', async () => {
             document.querySelector('.loading').style.display = 'block';
             new MobileNavigation();
@@ -883,7 +857,6 @@
 
             menuToggle.setAttribute('aria-controls', 'nav-links-container');
 
-            // Ads
             const script = document.createElement('script');
             script.async = true;
             script.src = '//pl27363244.profitableratecpm.com/92a5cd60c487a8ec687237fdb53b8531/invoke.js';
