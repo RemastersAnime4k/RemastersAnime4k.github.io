@@ -74,7 +74,6 @@
             box-shadow: 0 8px 32px var(--shadow-light);
         }
 
-        /* Navbar */
         .navbar {
             padding: 0.8rem 1.5rem;
             margin-bottom: 2rem;
@@ -155,7 +154,6 @@
             background: rgba(255, 255, 255, 0.12);
         }
 
-        /* Grid - SIN contain: strict */
         .anime-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -266,7 +264,6 @@
             animation: pulse 0.5s ease;
         }
 
-        /* Botón de volver arriba */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -306,7 +303,6 @@
             fill: none;
         }
 
-        /* Anuncios */
         .asd-container {
             grid-column: 1 / -1;
             padding: 1.5rem;
@@ -398,9 +394,9 @@
             margin-top: 2rem;
         }
 
-        /* Menú móvil - oculto por defecto */
+        /* ✅ CORRECCIÓN DEFINITIVA DEL MENÚ MÓVIL */
         .menu-toggle {
-            display: none;
+            display: none !important;
             background: none;
             border: none;
             font-size: 1.8rem;
@@ -409,9 +405,14 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex !important;
+            }
         }
 
         @keyframes gradientFlow {
@@ -433,7 +434,6 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             body {
                 padding: 12px;
@@ -445,11 +445,6 @@
                 gap: 1rem;
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            .menu-toggle {
-                display: flex; /* Solo visible en móvil */
-                margin-left: auto;
             }
 
             .nav-links {
