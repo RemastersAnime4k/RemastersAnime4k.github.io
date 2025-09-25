@@ -1,259 +1,1070 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Remastersanime4k</title>
-  <meta name="description" content="Remastersanime4k - Tu fuente principal de anime remasterizado en 4K, mangas y más" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-  <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=satoshi@400,500,700&display=swap" />
-  <style>
-    :root {
-      --primary-color: #ff6b6b;
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --color1: #ffcccc; --color2: #ccffff; --color3: #ffd9cc; --color4: #ccfffc;
-      --text-color: #2d3436;
-      --card-border: rgba(255, 255, 255, 0.18);
-      --shadow-light: rgba(0, 0, 0, 0.12);
-      --shadow-hover: rgba(0, 0, 0, 0.2);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color1: #1a0a0a; --color2: #0a1a1a; --color3: #1a120a; --color4: #0a1a18;
-        --glass-bg: rgba(20, 20, 30, 0.3);
-        --text-color: #f0f0f0;
-        --card-border: rgba(255, 255, 255, 0.1);
-        --shadow-light: rgba(0, 0, 0, 0.4);
-        --shadow-hover: rgba(0, 0, 0, 0.5);
-      }
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remastersanime4k</title>
+    <meta name="description" content="Remastersanime4k - Tu fuente principal de anime remasterizado en 4K, mangas y más">
+    <meta property="og:title" content="Remastersanime4k">
+    <meta property="og:type" content="website">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com  ">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto&display=swap">
+    <link href="  https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --color1: #ffcccc;
+            --color2: #ccffff;
+            --color3: #ffd9cc;
+            --color4: #ccfffc;
+        }
+        
+		html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
 
-    body {
-      background: linear-gradient(135deg, var(--color1), var(--color2), var(--color3), var(--color4));
-      background-size: 400% 400%;
-      animation: gradientFlow 20s ease infinite alternate;
-      font-family: 'Satoshi', sans-serif;
-      margin: 0; padding: 20px; min-height: 100vh; color: var(--text-color);
-    }
+		body {
+			background: linear-gradient(135deg, var(--color1), var(--color2), var(--color3), var(--color4));
+			background-size: 400% 400%;
+			animation: gradientFlow 20s ease infinite;
+			font-family: 'Comic Neue', cursive;
+			margin: 0;
+			padding: 20px; /* Mantener el padding original */
+			min-height: 100vh;
+		}
 
-    .glass {
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      box-shadow: 0 8px 32px var(--shadow-light);
-    }
+		.navbar {
+			backdrop-filter: blur(10px);
+			background: var(--glass-bg);
+			border-radius: 15px;
+			padding: 0.8rem 2rem;
+			margin-bottom: 2rem;
+			box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+			flex-wrap: wrap;
+			position: sticky;
+			top: 20px; /* Ajustar según el padding del body */
+			z-index: 100;
+		}
 
-    .navbar {
-      padding: 0.8rem 1.5rem; margin-bottom: 2rem; display: flex; gap: 1.5rem;
-      position: sticky; top: 20px; z-index: 100; border-radius: 20px;
-    }
+        .site-title {
+            color: #2d3436;
+            font-size: 1.8rem;
+            margin: 0;
+            text-decoration: none;
+            cursor: default;
+            user-select: none;
+        }
 
-    .site-title { font-size: 1.8rem; margin: 0; color: var(--text-color); font-weight: 700; }
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-grow: 1;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+			transition: all 0.3s ease;
+        }
 
-    .nav-links { display: flex; gap: 1.2rem; flex-grow: 1; justify-content: center; }
-    .nav-links a {
-      color: var(--text-color); text-decoration: none; padding: 0.6rem 1.2rem;
-      border-radius: 10px; font-weight: 500;
-    }
-    .nav-links a.active { background: var(--primary-color); color: white !important; }
+        .nav-links a {
+            color: #2d3436;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
 
-    .search-container { max-width: 400px; width: 100%; flex-grow: 1; }
-    .search-input {
-      width: 100%; padding: 0.8rem 1.5rem; border: none; border-radius: 30px;
-      background: var(--glass-bg); font-family: 'Satoshi', sans-serif; color: var(--text-color);
-    }
+        .nav-links a.active {
+            background: var(--primary-color);
+            color: white !important;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
 
-    .anime-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 2rem; padding: 1.5rem; margin-bottom: 80px;
-    }
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 3px 3px 6px #d1d1d1, -3px -3px 6px #ffffff;
+        }
 
-    .anime-card {
-      border-radius: 20px; padding: 1rem; position: relative; overflow: hidden;
-      cursor: pointer; transition: transform 0.3s ease;
-      filter: drop-shadow(0 10px 20px var(--shadow-light));
-    }
-    .anime-card:hover {
-      transform: translateY(-8px);
-      filter: drop-shadow(0 15px 30px var(--shadow-hover));
-    }
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            flex-grow: 1;
+            min-width: 200px;
+        }
 
-    .anime-image {
-      width: 100%; height: 300px; border-radius: 15px; object-fit: cover;
-      border: 2px solid white; transition: transform 0.3s ease;
-    }
-    .anime-card:hover .anime-image { transform: scale(1.03); }
+        .search-input {
+            width: 90%;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            box-shadow: inset 3px 3px 6px #d1d1d1, inset -3px -3px 6px #ffffff;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
 
-    .category-bubbles { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; z-index: 2; }
-    .category-bubble {
-      background: white; padding: 0.3rem 0.8rem; border-radius: 20px;
-      font-size: 0.72rem; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
+        .search-input:focus {
+            outline: none;
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+        }
 
-    .anime-title {
-      text-align: center; margin: 1rem 0; font-size: 1.25rem; font-weight: 700;
-    }
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+			margin-bottom: 80px; /* Espacio para el botón de scroll */
+        }
 
-    .anime-description {
-      background: rgba(255, 255, 255, 0.85); padding: 1rem; border-radius: 8px; margin-top: 1rem;
-      font-family: 'Satoshi', sans-serif; font-size: 0.92rem; line-height: 1.5;
-    }
-    @media (prefers-color-scheme: dark) {
-      .anime-description { background: rgba(20, 20, 30, 0.75); color: #e0e0e0; }
-    }
+        .anime-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem;
+            border: 2px solid #fff;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+			text-decoration: none !important;
+			color: inherit !important;
+            will-change: transform, box-shadow; /* Hint to the browser */
+            isolation: isolate; /* Create a new stacking context */
+        }
 
-    .favorite-icon {
-      position: absolute; top: 12px; right: 12px; cursor: pointer; font-size: 1.6rem;
-      color: #ff6b6b; z-index: 3;
-    }
-    .favorite-icon.active { color: #ff0000; }
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
 
-    .back-to-top {
-      position: fixed; bottom: 30px; right: 30px; background: var(--primary-color);
-      color: white; width: 52px; height: 52px; border-radius: 50%; border: none;
-      display: flex; align-items: center; justify-content: center; opacity: 0;
-      transition: opacity 0.3s ease; z-index: 1000;
-    }
-    .back-to-top.show { opacity: 1; }
+        .anime-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            /*object-fit: cover;*/
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+        }
 
-    .menu-toggle { display: none !important; }
-    @media (max-width: 768px) {
-      .menu-toggle { display: flex !important; }
-      .anime-grid { grid-template-columns: 1fr; }
-    }
+        .anime-card:hover .anime-image {
+            transform: scale(1.02);
+        }
 
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+        .category-bubbles {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            max-width: 80%;
+            z-index: 1;
+        }
+
+        .category-bubble {
+            background: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .category-bubble:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .anime-title {
+            color: #2d3436;
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transition: padding 0.3s ease;
+        }
+
+        .anime-description {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 1rem;
+            border-radius: 5px 5px 15px 15px;
+            margin-top: 1rem;
+            border-top: 2px solid white;
+            font-family: 'Roboto', sans-serif;
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+		
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }		
+
+        .back-to-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .favorite-icon.active {
+            color: #ff0000;
+            transform: scale(1.3);
+            animation: pulse 0.5s ease;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #2d3436;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #2d3436;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilos para banners publicitarios */
+        .asd-container {
+            grid-column: 1 / -1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid #fff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem 0; /* Ensured margin is applied for standalone ads too */
+            position: relative;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            transition: all 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            z-index: 1;
+            min-height: 180px; /* Give it a minimum height to avoid collapse */
+        }
+
+        .asd-container:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Centrar contenido en el anuncio dinámico de Adsterra */
+        .asd-container:not(.fallback-ad) {
+            justify-content: center;
+        }
+
+        /* Estilo de hover especial para el anuncio de fallback */
+        .asd-container.fallback-ad:hover {
+            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6), 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+
+        .asd-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .asd-image {
+            width: 250px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid white;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .asd-image:hover {
+            transform: scale(1.02);
+        }
+
+        .asd-content {
+            flex-grow: 1;
+        }
+
+        .asd-title {
+            font-family: 'Comic Neue', cursive;
+            color: #2d3436;
+            margin: 0 0 1rem 0;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .asd-description {
+            font-family: 'Roboto', sans-serif;
+            color: #2d3436;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .asd-cta {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Comic Neue', cursive;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .asd-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+		
+            body {
+				padding: 10px;
+                padding-bottom: 50px; /* Evita que el menú quede pegado al fondo */
+            }
+			
+            .navbar {
+				gap: 1rem;
+                padding: 1rem;
+				position: sticky;
+				top: 20px;
+				z-index: 1000;
+				overflow: visible;
+				transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+            }
+			
+			.nav-hidden {
+				transform: translateY(-150%) !important;
+				transition-duration: 0.3s;
+			}
+            
+			.nav-links {
+				position: sticky;
+				left: 0;
+				right: 0;
+				background: var(--glass-bg);
+				backdrop-filter: blur(15px);
+				margin: 10px;
+				display: none; /* Ocultar inicialmente */
+				opacity: 1; /* Mantener opacidad completa */
+				transform: none;
+				transition: none;
+				max-height: none;
+				z-index: 1001; /* Mayor que el navbar */
+				border: 2px solid rgba(255, 255, 255, 0.3); /* Borde luminoso */
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+				padding: 1.5rem; /* Más espacio interno */
+				gap: 1rem; /* Espacio entre links */
+			}
+
+			.nav-links.active {
+				display: flex; /* Mostrar cuando está activo */
+				flex-direction: column;
+				animation: slideDown 0.3s ease-out;
+				background: rgba(255, 255, 255, 0.15);
+				border-radius: 12px;
+				backdrop-filter: blur(15px);
+				position: sticky;
+			}
+			
+			@keyframes slideDown {
+				from {
+					transform: translateY(-10px);
+					opacity: 0;
+				}
+				to {
+					transform: translateY(0);
+					opacity: 1;
+				}
+			}
+            
+			.menu-toggle {
+				order: 1; /* Posicionar a la derecha */
+				margin-left: auto;
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 50%;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.menu-toggle:hover {
+				background: rgba(255, 255, 255, 0.2);
+				box-shadow: 0 0 10px rgba(0,0,0,0.1);
+			}
+
+			.menu-toggle.active {
+				transform: rotate(90deg) scale(1.1);
+			}
+			
+			.navbar.active {
+				box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+				border-radius: 20px;
+            }
+
+            .search-input {
+				width: auto;
+                font-size: 1.1rem;
+                padding: 0.9rem 1.3rem;
+            }
+			
+            .search-container {
+                order: 2;
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .nav-links a {
+                justify-content: center;
+                padding: 0.8rem;
+            }
+            
+            .anime-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .anime-card {
+                border-radius: 15px;
+                padding: 0.8rem;
+                transition: none;
+            }
+            
+            .anime-card:active {
+                transform: scale(0.98);
+            }
+			
+            .anime-image {
+                height: 375px;
+            }
+			
+            .favorite-icon {
+                font-size: 1.3rem;
+            }
+            
+            .favorite-icon:active {
+                transform: scale(1.3);
+            }
+			
+            .category-bubble {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .asd-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .asd-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .asd-badge {
+                position: static;
+                margin-bottom: 1rem;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+			
+			.back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+		
+        /* Mejoras para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .anime-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.8rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .anime-image {
+                height: 320px;
+            }
+
+            .search-container {
+                max-width: 350px;
+            }
+
+            .category-bubbles {
+                gap: 8px;
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1.3); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+    <script>
+    // Función para cargar anuncios de forma dinámica
+    function loadAdsterraAds() {
+        // Script para banner nativo (cargado dinámicamente)
+        const nativeScript = document.createElement('script');
+        nativeScript.async = true;
+        nativeScript.dataset.cfasync = 'false';
+        nativeScript.src = '//pl27363244.profitableratecpm.com/92a5cd60c487a8ec687237fdb53b8531/invoke.js';
+        document.head.appendChild(nativeScript);
     }
-  </style>
+    </script>
 </head>
 <body>
-  <nav class="navbar glass">
-    <h1 class="site-title">Remastersanime4k</h1>
-    <button class="menu-toggle">☰</button>
-    <div class="nav-links">
-      <a href="#home" class="active">Inicio</a>
-      <a href="#anime">Anime</a>
-      <a href="#manga">Mangas</a>
-      <a href="#favorites">Favoritos</a>
-    </div>
-    <div class="search-container">
-      <input type="text" class="search-input" placeholder="Buscar...">
-    </div>
-  </nav>
+    <nav class="navbar" aria-label="Navegación principal">
+        <h1 class="site-title">Remastersanime4k</h1>
+        <button class="menu-toggle" aria-label="Menú">☰</button>
+        <div class="nav-links">
+            <a href="#home" class="active">Inicio</a>
+            
+            <a href="#anime">Anime</a>
+            <a href="#manga">Mangas</a>
+            <a href="#manhwa">Manhwa</a>
+            <a href="#manhua">Manhua</a>
+            <a href="#favorites">Favoritos</a>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-input" 
+                   placeholder="Buscar contenido..."
+                   aria-label="Buscar contenido">
+        </div>
+    </nav>
 
-  <div class="loading" style="display:none; text-align:center; grid-column:1/-1;">Cargando...</div>
-  <div class="anime-grid"></div>
-  <button class="back-to-top">↑</button>
+    <div class="loading">🔄 Cargando...</div>
+    <div class="anime-grid"></div>
+    <button class="back-to-top" aria-label="Volver al inicio">↑</button>
 
-  <script>
+<script>
     let currentCategory = 'home';
     let searchTerm = '';
-    let animeData = [];
+    window.animeData = []; // Initialize global animeData
+    let adsterraContainerCreated = false; // Flag to ensure Adsterra ID is used only once
 
-    // ✅ FUNCIÓN CLAVE: limpia URLs
-    function cleanUrl(url) {
-      return (url || '').trim();
+    // Crear anuncio alternativo si se bloquea el script
+    function createFallbackAd() {
+        // Find all empty ad containers
+        const adSlots = document.querySelectorAll('.asd-container');
+        if (adSlots.length === 0) return;
+
+        const fallbackAdContent = `
+            <a href="  https://remastersanime4k.github.io/Espacio-Publicitario.html  " target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: contents;">
+                <div class="asd-badge">PUBLICIDAD</div>
+                <img src="https://i.pinimg.com/736x/11/15/2d/11152dc45f236704097ab8582b865acb.jpg  " 
+                    class="asd-image" 
+                    alt="Publicidad"
+                    loading="lazy">
+                <div class="asd-content">
+                    <h3 class="asd-title">¡Tu apoyo hace la diferencia! ❤️</h3>
+                    <p class="asd-description">Tu visita a los patrocinadores hace posible que sigamos compartiendo tu anime favorito en 4K</p>
+                    <div class="asd-cta">Visitar</div>
+                </div>
+            </a>
+        `;
+        
+        adSlots.forEach(container => {
+            // Only fill if it's empty or was the adsterra placeholder
+            if (container.innerHTML.trim() === '' || container.querySelector('#container-92a5cd60c487a8ec687237fdb53b8531')) {
+                 container.classList.add('fallback-ad'); // Add class for special hover
+                 container.innerHTML = fallbackAdContent;
+            }
+        });
+    }
+
+    // Modificar la función createAdElement
+    function createAdElement(isFirstAd) {
+        const adContainer = document.createElement('div');
+        adContainer.className = 'asd-container';
+        
+        // Contenedor para Adsterra (será reemplazado si falla)
+        if (isFirstAd) {
+            // Añadir el badge para una apariencia consistente
+            const badge = document.createElement('div');
+            badge.className = 'asd-badge';
+            badge.textContent = 'PUBLICIDAD';
+            adContainer.appendChild(badge);
+
+            // Añadir el contenedor de Adsterra
+            const adsterraPlaceholder = document.createElement('div');
+            adsterraPlaceholder.id = 'container-92a5cd60c487a8ec687237fdb53b8531';
+            adContainer.appendChild(adsterraPlaceholder);
+        }
+        // Los otros contenedores de anuncios se dejan vacíos para que el fallback los llene.
+        
+        return adContainer;
     }
 
     async function loadAnimeData() {
-      try {
-        const res = await fetch('animeData.json');
-        if (!res.ok) throw new Error('No se pudo cargar animeData.json');
-        return await res.json();
-      } catch (e) {
-        console.error(e);
-        document.querySelector('.anime-grid').innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-color)">Error al cargar datos.</p>`;
-        return [];
-      }
+        try {
+            const response = await fetch('animeData.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("No se pudo cargar animeData:", error);
+            document.querySelector('.anime-grid').innerHTML = `<p class="no-results" style="grid-column: 1 / -1;">Error al cargar los datos. Por favor, inténtalo más tarde.</p>`;
+            return [];
+        }
     }
 
     function toggleFavorite(title) {
-      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-      const idx = favs.indexOf(title);
-      if (idx === -1) favs.push(title);
-      else favs.splice(idx, 1);
-      localStorage.setItem('favorites', JSON.stringify(favs));
-      updateFavoriteIcons();
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.indexOf(title);
+        if (index === -1) {
+            favorites.push(title);
+        } else {
+            favorites.splice(index, 1);
+        }
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        updateFavoriteIcons();
+
+        // If the user is in the favorites view, re-filter the cards to show the change instantly.
+        if (currentCategory === 'favorites') {
+            filterCards();
+        }
     }
 
     function updateFavoriteIcons() {
-      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-      document.querySelectorAll('.favorite-icon').forEach(icon => {
-        const title = icon.dataset.title;
-        icon.classList.toggle('active', favs.includes(title));
-      });
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            const cardElement = icon.closest('.anime-card');
+            if (cardElement) {
+                const titleElement = cardElement.querySelector('.anime-title');
+                if (titleElement) {
+                    const title = titleElement.textContent;
+                    icon.classList.toggle('active', favorites.includes(title));
+                }
+            }
+        });
     }
 
+    // ✅ FUNCIÓN CORREGIDA: limpieza de URLs con .trim()
     function generateCards(data) {
-      const grid = document.querySelector('.anime-grid');
-      grid.innerHTML = '';
-      data.forEach((item, i) => {
-        // ✅ LIMPIEZA DE URLs
-        const img = cleanUrl(item.image);
-        const url = cleanUrl(item.url);
-        const title = item.title || 'Sin título';
-        const desc = item.description || '';
-        const cats = item.categories || [];
+        const grid = document.querySelector('.anime-grid');
+        grid.innerHTML = ''; // Clear previous items
+        const fragment = document.createDocumentFragment();
+        adsterraContainerCreated = false; // Reset flag on each generation
 
-        const card = document.createElement('div');
-        card.className = 'anime-card glass';
-        card.dataset.link = url;
-        card.innerHTML = `
-          <div class="favorite-icon" data-title="${title}" onclick="toggleFavorite('${title.replace(/'/g, "\\'")}')" role="button">♥</div>
-          <div class="category-bubbles">
-            ${cats.map(cat => `<div class="category-bubble">${cat.toUpperCase()}</div>`).join('')}
-          </div>
-          <img src="${img}" 
-               alt="Portada de ${title}" 
-               class="anime-image"
-               loading="lazy"
-               onerror="this.src='https://via.placeholder.com/300x400?text=No+disponible'">
-          <h3 class="anime-title">${title}</h3>
-          <div class="anime-description"><p>${desc}</p></div>
-        `;
-        grid.appendChild(card);
-      });
-      updateFavoriteIcons();
+        if (!Array.isArray(data)) {
+            console.error('generateCards expects an array, but received:', data);
+            updateNoResultsMessage([]); // Show no results message
+            return;
+        }
+
+        data.forEach((item, index) => {
+            if (index > 0 && index % 18 === 0) {
+                const adElement = createAdElement(!adsterraContainerCreated);
+                if (!adsterraContainerCreated) {
+                    adsterraContainerCreated = true;
+                }
+                fragment.appendChild(adElement);
+            }
+
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'anime-card';
+            // ✅ CORRECCIÓN: limpiar URL y imagen
+            const cleanUrl = (item.url || '').trim();
+            const cleanImage = (item.image || '').trim();
+            cardDiv.dataset.link = cleanUrl;
+            // Sanitize title for use in JavaScript string literal in onclick
+            const sanitizedTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+
+            cardDiv.innerHTML = `
+                <div class="favorite-icon" onclick="toggleFavorite('${sanitizedTitle}')" role="button" aria-pressed="false" aria-label="Marcar como favorito">♥</div>
+                <div class="category-bubbles">
+                    ${(item.categories || []).map(cat => `<div class="category-bubble">${cat.toUpperCase()}</div>`).join('')}
+                </div>
+                <img src="${cleanImage}"
+                     alt="Portada de ${item.title}"
+                     class="anime-image"
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/300x400?text=Imagen+no+disponible'">
+                <h3 class="anime-title">${item.title}</h3>
+                <div class="anime-description">
+                    <p class="description-content">${item.description}</p>
+                </div>`;
+            fragment.appendChild(cardDiv);
+        });
+        grid.appendChild(fragment);
     }
+
 
     function filterCards() {
-      if (!animeData.length) return;
-      let filtered = animeData.filter(item => {
-        const matchesCat = currentCategory === 'home' || (item.categories || []).includes(currentCategory);
-        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesCat && matchesSearch;
-      });
-      if (currentCategory === 'favorites') {
-        const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-        filtered = animeData.filter(item => 
-          favs.includes(item.title) && 
-          item.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      }
-      generateCards(filtered);
+        if (!window.animeData || window.animeData.length === 0) {
+            if(document.querySelector('.loading').style.display !== 'block') {
+                updateNoResultsMessage([]);
+            }
+            return;
+        }
+
+        let filteredData;
+
+        if (currentCategory === 'favorites') {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            filteredData = window.animeData.filter(item =>
+                favorites.includes(item.title) &&
+                item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        } else {
+            filteredData = window.animeData.filter(item =>
+                (currentCategory === 'home' || (item.categories && item.categories.includes(currentCategory))) &&
+                item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+
+        document.querySelector('.loading').style.display = 'block';
+        requestAnimationFrame(() => {
+            generateCards(filteredData);
+            document.querySelector('.loading').style.display = 'none';
+            updateNoResultsMessage(filteredData);
+            updateFavoriteIcons();
+            setupIntersectionObserver();
+        });
     }
 
-    // Eventos básicos (simplificados)
-    document.querySelector('.search-input').addEventListener('input', e => {
-      searchTerm = e.target.value.trim();
-      filterCards();
+    function updateNoResultsMessage(data) {
+        let existingMessage = document.querySelector('.no-results');
+        const grid = document.querySelector('.anime-grid');
+
+        if (data.length === 0) {
+            if (!existingMessage) {
+                existingMessage = document.createElement('p');
+                existingMessage.className = 'no-results';
+                existingMessage.style.gridColumn = '1 / -1'; // Ensure it spans across grid
+                grid.insertAdjacentElement('afterend', existingMessage);
+            }
+            if (currentCategory === 'favorites') {
+                if (searchTerm) {
+                    existingMessage.textContent = `💔 No se encontraron favoritos que coincidan con "${searchTerm}".`;
+                } else {
+                    existingMessage.textContent = '💔 Aún no has añadido nada a favoritos. ¡Toca el corazón en tus animes preferidos para guardarlos aquí!';
+                }
+            } else {
+                existingMessage.textContent = `🔍 No se encontraron resultados para "${searchTerm || 'la categoría seleccionada'}"`;
+            }
+        } else if (existingMessage) {
+            existingMessage.remove();
+        }
+    }
+
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 }); // Adjusted rootMargin
+
+        document.querySelectorAll('.anime-card, .asd-container').forEach(card => {
+            card.style.opacity = '0'; // Initial state for animation
+            card.style.transform = 'translateY(20px)';
+            observer.observe(card);
+        });
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const newCategory = link.getAttribute('href').slice(1);
+            if (currentCategory === newCategory && searchTerm === '') return; // Avoid re-filtering if no change
+
+            currentCategory = newCategory;
+            localStorage.setItem('selectedCategory', currentCategory); // Save category
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+            
+            const navLinksContainer = document.querySelector('.nav-links');
+            if (navLinksContainer.classList.contains('active')) {
+                 navLinksContainer.classList.remove('active');
+                 document.querySelector('.menu-toggle').textContent = '☰';
+                 document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+            }
+            filterCards();
+        });
     });
 
-    document.querySelector('.anime-grid').addEventListener('click', e => {
-      const card = e.target.closest('.anime-card');
-      if (card && !e.target.closest('.favorite-icon')) {
-        window.open(card.dataset.link, '_blank', 'noopener,noreferrer');
-      }
+    document.querySelector('.search-input').addEventListener('input', (e) => {
+        searchTerm = e.target.value.trim();
+        filterCards();
     });
 
-    // Inicialización
+    document.querySelector('.menu-toggle').addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click from closing menu immediately
+        const navLinks = document.querySelector('.nav-links');
+        const isOpening = !navLinks.classList.contains('active');
+        navLinks.classList.toggle('active');
+        e.currentTarget.textContent = isOpening ? '×' : '☰';
+        e.currentTarget.setAttribute('aria-expanded', isOpening.toString());
+        document.querySelector('.navbar').classList.toggle('active', isOpening);
+    });
+
+    document.addEventListener('click', (e) => {
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+        // Close if click is outside navbar and menu is open
+        if (navLinks.classList.contains('active') && !e.target.closest('.navbar')) {
+            navLinks.classList.remove('active');
+            menuToggle.textContent = '☰';
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.querySelector('.navbar').classList.remove('active');
+        }
+    });
+
+    // Debounce scroll event for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            // Back to top button
+            const button = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) { // Show earlier
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+
+            // Close mobile menu on scroll
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                document.querySelector('.menu-toggle').textContent = '☰';
+                document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+                document.querySelector('.navbar').classList.remove('active');
+            }
+        }, 50); // Adjust debounce delay as needed
+    }, { passive: true });
+
+
+    document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    class MobileNavigation {
+        constructor() {
+            this.lastScroll = 0;
+            this.navbar = document.querySelector('.navbar');
+            this.isMobile = window.innerWidth <= 768;
+            this.throttleTimeout = null;
+            this.navHidden = false;
+
+            this.addEventListeners();
+            this.handleResize(); // Initial check
+        }
+
+        addEventListeners() {
+            window.addEventListener('scroll', () => this.handleScrollThrottled(), { passive: true });
+            window.addEventListener('resize', () => this.handleResize());
+        }
+        
+        handleScrollThrottled() {
+            if (!this.throttleTimeout) {
+                this.throttleTimeout = setTimeout(() => {
+                    this.performScrollAction();
+                    this.throttleTimeout = null;
+                }, 100); // Throttle to run at most every 100ms
+            }
+        }
+
+        performScrollAction() {
+            if (!this.isMobile || document.querySelector('.nav-links.active')) return; // Don't hide if menu is open
+
+            const currentScroll = window.pageYOffset;
+            // Hide navbar if scrolling down and past a certain point (e.g. 100px)
+            // Show if scrolling up or near the top
+            if (currentScroll > this.lastScroll && currentScroll > 150) { // Increased threshold
+                if (!this.navHidden) {
+                    this.navbar.classList.add('nav-hidden');
+                    this.navHidden = true;
+                }
+            } else {
+                if (this.navHidden) {
+                    this.navbar.classList.remove('nav-hidden');
+                    this.navHidden = false;
+                }
+            }
+            this.lastScroll = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        }
+
+
+        handleResize() {
+            this.isMobile = window.innerWidth <= 768;
+            if (!this.isMobile) {
+                this.navbar.classList.remove('nav-hidden');
+                this.navHidden = false; // Reset state if not mobile
+                // Ensure mobile menu is closed and reset
+                const navLinks = document.querySelector('.nav-links');
+                if(navLinks.classList.contains('active')){
+                    navLinks.classList.remove('active');
+                    document.querySelector('.menu-toggle').textContent = '☰';
+                    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+                    document.querySelector('.navbar').classList.remove('active');
+                }
+            }
+             // Re-evaluate scroll behavior based on new size
+            this.performScrollAction();
+        }
+    }
+
+
+    document.querySelector('.anime-grid').addEventListener('click', (e) => {
+        const card = e.target.closest('.anime-card');
+        // Ensure not clicking on favorite icon or any interactive element within the card
+        if (card && !e.target.closest('.favorite-icon, a, button')) {
+            window.open(card.dataset.link, '_blank');
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', async () => {
-      animeData = await loadAnimeData();
-      filterCards();
+        document.querySelector('.loading').style.display = 'block'; // Show loader early
+        
+        // Initialize Mobile Navigation
+        new MobileNavigation();
+
+        // Restore category from localStorage or default to 'home'
+        currentCategory = localStorage.getItem('selectedCategory') || 'home';
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-links a[href="#${currentCategory}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        } else { // Fallback if saved category link doesn't exist
+            document.querySelector('.nav-links a[href="#home"]').classList.add('active');
+            currentCategory = 'home';
+        }
+        
+        // Load anime data
+        window.animeData = await loadAnimeData();
+        
+        // Initial filter and render
+        filterCards(); // This will also hide loader, update messages, and icons
+        
+        // Set up menu toggle ARIA attributes
+        const menuToggle = document.querySelector('.menu-toggle');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-controls', 'nav-links-container'); // Assuming nav-links div gets an ID
+        const navLinksDiv = document.querySelector('.nav-links');
+        if(navLinksDiv) navLinksDiv.id = 'nav-links-container';
+
+        // Ensure favorite icons are updated on load based on localStorage
+        updateFavoriteIcons(); 
+
+        // --- Ad System Initialization ---
+        try {
+            loadAdsterraAds();
+        } catch (e) {
+            console.error('Error loading ads:', e);
+        }
+        
+        // Detect ad blockers and show fallback ad
+        setTimeout(() => {
+            const adContainer = document.getElementById('container-92a5cd60c487a8ec687237fdb53b8531');
+            // If the container doesn't exist OR it exists but is empty, run the fallback.
+            if (!adContainer || adContainer.innerHTML.trim() === '') {
+                createFallbackAd();
+            }
+        }, 2000);
     });
-  </script>
+</script>
 </body>
 </html>
