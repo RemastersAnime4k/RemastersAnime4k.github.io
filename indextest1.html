@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remastersanime4k</title>
+    <meta name="description" content="Remastersanime4k - Tu fuente principal de anime remasterizado en 4K, mangas y más">
+    <meta property="og:title" content="Remastersanime4k">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --color1: #ffcccc;
+            --color2: #ccffff;
+            --color3: #ffd9cc;
+            --color4: #ccfffc;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color1), var(--color2), var(--color3), var(--color4));
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 0.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .site-title {
+            color: #2d3436;
+            font-size: 1.8rem;
+            margin: 0;
+            text-decoration: none;
+            cursor: default;
+            user-select: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-grow: 1;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            color: #2d3436;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-links a.active {
+            background: var(--primary-color);
+            color: white !important;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 3px 3px 6px #d1d1d1, -3px -3px 6px #ffffff;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .search-input {
+            width: 90%;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            box-shadow: inset 3px 3px 6px #d1d1d1, inset -3px -3px 6px #ffffff;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+        }
+
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            margin-bottom: 80px;
+        }
+
+        .anime-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem;
+            border: 2px solid #fff;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+            text-decoration: none !important;
+            color: inherit !important;
+            will-change: transform, box-shadow;
+            isolation: isolate;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+
+        .anime-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            border: 3px solid white;
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .anime-card:hover .anime-image {
+            transform: scale(1.02);
+        }
+
+        .category-bubbles {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            max-width: 80%;
+            z-index: 1;
+        }
+
+        .category-bubble {
+            background: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .category-bubble:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .anime-title {
+            color: #2d3436;
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transition: padding 0.3s ease;
+        }
+
+        .anime-description {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 1rem;
+            border-radius: 5px 5px 15px 15px;
+            margin-top: 1rem;
+            border-top: 2px solid white;
+            font-family: 'Roboto', sans-serif;
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            font-size: 1.5rem;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            z-index: 2;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .favorite-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .favorite-icon.active {
+            color: #ff0000;
+            transform: scale(1.1);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #2d3436;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #2d3436;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Sistema de anuncios mejorado */
+        .ad-container {
+            grid-column: 1 / -1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid #fff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 1;
+            min-height: 180px;
+        }
+
+        .ad-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6), 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+        }
+
+        .ad-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .ad-image {
+            width: 250px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid white;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .ad-content {
+            flex-grow: 1;
+        }
+
+        .ad-title {
+            font-family: 'Comic Neue', cursive;
+            color: #2d3436;
+            margin: 0 0 1rem 0;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .ad-description {
+            font-family: 'Roboto', sans-serif;
+            color: #2d3436;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Comic Neue', cursive;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .ad-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                padding-bottom: 50px;
+            }
+            
+            .navbar {
+                gap: 1rem;
+                padding: 1rem;
+                position: sticky;
+                top: 20px;
+                z-index: 1000;
+                overflow: visible;
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+            }
+            
+            .nav-hidden {
+                transform: translateY(-150%) !important;
+                transition-duration: 0.3s;
+            }
+            
+            .nav-links {
+                position: sticky;
+                left: 0;
+                right: 0;
+                background: var(--glass-bg);
+                backdrop-filter: blur(15px);
+                margin: 10px;
+                display: none;
+                opacity: 1;
+                transform: none;
+                transition: none;
+                max-height: none;
+                z-index: 1001;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                animation: slideDown 0.3s ease-out;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 12px;
+                backdrop-filter: blur(15px);
+                position: sticky;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    transform: translateY(-10px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            .menu-toggle {
+                order: 1;
+                margin-left: auto;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .menu-toggle:hover {
+                background: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+
+            .menu-toggle.active {
+                transform: rotate(90deg) scale(1.1);
+            }
+            
+            .navbar.active {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                border-radius: 20px;
+            }
+
+            .search-input {
+                width: auto;
+                font-size: 1.1rem;
+                padding: 0.9rem 1.3rem;
+            }
+            
+            .search-container {
+                order: 2;
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .nav-links a {
+                justify-content: center;
+                padding: 0.8rem;
+            }
+            
+            .anime-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .anime-card {
+                border-radius: 15px;
+                padding: 0.8rem;
+                transition: none;
+            }
+            
+            .anime-card:active {
+                transform: scale(0.98);
+            }
+            
+            .anime-image {
+                height: 375px;
+            }
+            
+            .favorite-icon {
+                font-size: 1.3rem;
+            }
+            
+            .favorite-icon:active {
+                transform: scale(1.3);
+            }
+            
+            .category-bubble {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .ad-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .ad-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .ad-badge {
+                position: static;
+                margin-bottom: 1rem;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .anime-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.8rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .anime-image {
+                height: 320px;
+            }
+
+            .search-container {
+                max-width: 350px;
+            }
+
+            .category-bubbles {
+                gap: 8px;
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1.3); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" aria-label="Navegación principal">
+        <h1 class="site-title">Remastersanime4k</h1>
+        <button class="menu-toggle" aria-label="Menú">☰</button>
+        <div class="nav-links">
+            <a href="#home" class="active">Inicio</a>
+            <a href="#anime">Anime</a>
+            <a href="#manga">Mangas</a>
+            <a href="#manhwa">Manhwa</a>
+            <a href="#manhua">Manhua</a>
+            <a href="#favorites">Favoritos</a>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-input" 
+                   placeholder="Buscar contenido..."
+                   aria-label="Buscar contenido">
+        </div>
+    </nav>
+
+    <div class="loading">🔄 Cargando...</div>
+    <div class="anime-grid"></div>
+    <button class="back-to-top" aria-label="Volver al inicio">↑</button>
+
+<script>
+    // ============================================
+    // CONFIGURACIÓN
+    // ============================================
+    const CONFIG = {
+        dataSource: 'animeData.json',
+        adFrequency: 18, // Mostrar anuncio cada N cards
+        adConfig: {
+            fallbackAd: {
+                url: 'https://remastersanime4k.github.io/Espacio-Publicitario.html',
+                image: 'https://i.pinimg.com/736x/11/15/2d/11152dc45f236704097ab8582b865acb.jpg',
+                title: '¡Tu apoyo hace la diferencia! ❤️',
+                description: 'Tu visita a los patrocinadores hace posible que sigamos compartiendo tu anime favorito en 4K',
+                cta: 'Visitar'
+            }
+        },
+        storage: {
+            favoritesKey: 'anime_favorites',
+            categoryKey: 'selected_category'
+        }
+    };
+
+    // ============================================
+    // CLASE PRINCIPAL DE LA APLICACIÓN
+    // ============================================
+    class AnimeApp {
+        constructor() {
+            this.currentCategory = 'home';
+            this.searchTerm = '';
+            this.animeData = [];
+            this.elements = this.cacheElements();
+            this.mobileNav = null;
+            this.init();
+        }
+
+        cacheElements() {
+            return {
+                grid: document.querySelector('.anime-grid'),
+                loading: document.querySelector('.loading'),
+                searchInput: document.querySelector('.search-input'),
+                navLinks: document.querySelectorAll('.nav-links a'),
+                navLinksContainer: document.querySelector('.nav-links'),
+                menuToggle: document.querySelector('.menu-toggle'),
+                navbar: document.querySelector('.navbar'),
+                backToTop: document.querySelector('.back-to-top')
+            };
+        }
+
+        async init() {
+            this.showLoading(true);
+            await this.loadData();
+            this.restoreState();
+            this.setupEventListeners();
+            this.mobileNav = new MobileNavigation();
+            this.filterAndRender();
+        }
+
+        async loadData() {
+            try {
+                const response = await fetch(CONFIG.dataSource);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                this.animeData = await response.json();
+            } catch (error) {
+                console.error("Error al cargar datos:", error);
+                this.showError('Error al cargar los datos. Por favor, inténtalo más tarde.');
+            }
+        }
+
+        restoreState() {
+            this.currentCategory = this.storage.get(CONFIG.storage.categoryKey) || 'home';
+            this.elements.navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${this.currentCategory}`);
+            });
+        }
+
+        setupEventListeners() {
+            // Navegación con delegación de eventos
+            this.elements.navLinksContainer.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                e.preventDefault();
+                this.handleCategoryChange(link);
+            });
+
+            // Búsqueda con debounce
+            this.elements.searchInput.addEventListener('input', this.debounce((e) => {
+                this.searchTerm = this.sanitize(e.target.value.trim());
+                this.filterAndRender();
+            }, 300));
+
+            // Menú móvil
+            this.elements.menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleMobileMenu();
+            });
+
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.navbar') && this.elements.navLinksContainer.classList.contains('active')) {
+                    this.closeMobileMenu();
+                }
+            });
+
+            // Grid con delegación de eventos
+            this.elements.grid.addEventListener('click', (e) => {
+                this.handleGridClick(e);
+            });
+
+            // Scroll con RequestAnimationFrame
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        this.handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Back to top
+            this.elements.backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        handleCategoryChange(link) {
+            const newCategory = link.getAttribute('href').slice(1);
+            if (this.currentCategory === newCategory && !this.searchTerm) return;
+
+            this.currentCategory = newCategory;
+            this.storage.set(CONFIG.storage.categoryKey, newCategory);
+
+            this.elements.navLinks.forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+            
+            this.closeMobileMenu();
+            this.filterAndRender();
+        }
+
+        handleGridClick(e) {
+            // Manejar favoritos
+            const favoriteIcon = e.target.closest('.favorite-icon');
+            if (favoriteIcon) {
+                e.stopPropagation();
+                const card = favoriteIcon.closest('.anime-card');
+                const title = card.dataset.title;
+                this.toggleFavorite(title);
+                return;
+            }
+
+            // Manejar clic en card
+            const card = e.target.closest('.anime-card');
+            if (card && !e.target.closest('a, button')) {
+                const url = card.dataset.link;
+                if (url) window.open(url, '_blank', 'noopener,noreferrer');
+            }
+
+            // Manejar clic en anuncio
+            const adContainer = e.target.closest('.ad-container');
+            if (adContainer && !e.target.closest('a')) {
+                const link = adContainer.dataset.url;
+                if (link) window.open(link, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        handleScroll() {
+            // Back to top button
+            this.elements.backToTop.classList.toggle('show', window.scrollY > 300);
+
+            // Cerrar menú móvil al hacer scroll
+            if (this.elements.navLinksContainer.classList.contains('active')) {
+                this.closeMobileMenu();
+            }
+        }
+
+        toggleMobileMenu() {
+            const isOpening = !this.elements.navLinksContainer.classList.contains('active');
+            this.elements.navLinksContainer.classList.toggle('active');
+            this.elements.menuToggle.textContent = isOpening ? '×' : '☰';
+            this.elements.menuToggle.setAttribute('aria-expanded', isOpening);
+            this.elements.navbar.classList.toggle('active', isOpening);
+        }
+
+        closeMobileMenu() {
+            this.elements.navLinksContainer.classList.remove('active');
+            this.elements.menuToggle.textContent = '☰';
+            this.elements.menuToggle.setAttribute('aria-expanded', 'false');
+            this.elements.navbar.classList.remove('active');
+        }
+
+        toggleFavorite(title) {
+            const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
+            const index = favorites.indexOf(title);
+            
+            if (index === -1) {
+                favorites.push(title);
+            } else {
+                favorites.splice(index, 1);
+            }
+            
+            this.storage.set(CONFIG.storage.favoritesKey, favorites);
+            
+            // Actualizar UI inmediatamente
+            const card = this.elements.grid.querySelector(`[data-title="${this.escapeSelector(title)}"]`);
+            if (card) {
+                const icon = card.querySelector('.favorite-icon');
+                icon.classList.toggle('active', index === -1);
+                icon.setAttribute('aria-pressed', index === -1);
+            }
+
+            // Re-renderizar si estamos en favoritos
+            if (this.currentCategory === 'favorites') {
+                this.filterAndRender();
+            }
+        }
+
+        filterAndRender() {
+            if (!this.animeData.length) {
+                this.showError('No hay datos disponibles');
+                return;
+            }
+
+            const filteredData = this.getFilteredData();
+            
+            this.showLoading(true);
+            requestAnimationFrame(() => {
+                this.render(filteredData);
+                this.showLoading(false);
+                this.updateNoResultsMessage(filteredData);
+                this.setupIntersectionObserver();
+            });
+        }
+
+        getFilteredData() {
+            if (this.currentCategory === 'favorites') {
+                const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
+                return this.animeData.filter(item =>
+                    favorites.includes(item.title) &&
+                    item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+                );
+            }
+
+            return this.animeData.filter(item =>
+                (this.currentCategory === 'home' || item.categories?.includes(this.currentCategory)) &&
+                item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+            );
+        }
+
+        render(data) {
+            this.elements.grid.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+            const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
+
+            data.forEach((item, index) => {
+                // Insertar anuncio cada N cards
+                if (index > 0 && index % CONFIG.adFrequency === 0) {
+                    fragment.appendChild(this.createAdElement());
+                }
+
+                fragment.appendChild(this.createCard(item, favorites));
+            });
+
+            this.elements.grid.appendChild(fragment);
+        }
+
+        createCard(item, favorites) {
+            const card = document.createElement('div');
+            card.className = 'anime-card';
+            card.dataset.link = item.url;
+            card.dataset.title = item.title;
+
+            const isFavorite = favorites.includes(item.title);
+            
+            card.innerHTML = `
+                <div class="favorite-icon ${isFavorite ? 'active' : ''}" 
+                     role="button" 
+                     aria-pressed="${isFavorite}" 
+                     aria-label="Marcar como favorito"
+                     tabindex="0">
+                    ♥
+                </div>
+                <div class="category-bubbles">
+                    ${(item.categories || []).map(cat => 
+                        `<div class="category-bubble">${this.sanitize(cat.toUpperCase())}</div>`
+                    ).join('')}
+                </div>
+                <img src="${this.sanitize(item.image)}"
+                     alt="Portada de ${this.sanitize(item.title)}"
+                     class="anime-image"
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/300x400?text=Imagen+no+disponible'">
+                <h3 class="anime-title">${this.sanitize(item.title)}</h3>
+                <div class="anime-description">
+                    <p class="description-content">${this.sanitize(item.description)}</p>
+                </div>
+            `;
+
+            return card;
+        }
+
+        createAdElement() {
+            const ad = CONFIG.adConfig.fallbackAd;
+            const container = document.createElement('div');
+            container.className = 'ad-container';
+            container.dataset.url = ad.url;
+
+            container.innerHTML = `
+                <div class="ad-badge">PUBLICIDAD</div>
+                <img src="${ad.image}" 
+                     class="ad-image" 
+                     alt="Publicidad"
+                     loading="lazy">
+                <div class="ad-content">
+                    <h3 class="ad-title">${ad.title}</h3>
+                    <p class="ad-description">${ad.description}</p>
+                    <span class="ad-cta">${ad.cta}</span>
+                </div>
+            `;
+
+            return container;
+        }
+
+        setupIntersectionObserver() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { rootMargin: '0px 0px -50px 0px', threshold: 0.1 }
+            );
+
+            this.elements.grid.querySelectorAll('.anime-card, .ad-container').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        }
+
+        updateNoResultsMessage(data) {
+            let existingMessage = document.querySelector('.no-results');
+            
+            if (data.length === 0) {
+                if (!existingMessage) {
+                    existingMessage = document.createElement('p');
+                    existingMessage.className = 'no-results';
+                    existingMessage.style.gridColumn = '1 / -1';
+                    this.elements.grid.insertAdjacentElement('afterend', existingMessage);
+                }
+                
+                if (this.currentCategory === 'favorites') {
+                    existingMessage.textContent = this.searchTerm 
+                        ? `No se encontraron favoritos que coincidan con "${this.searchTerm}".`
+                        : 'Aún no has añadido nada a favoritos. ¡Toca el corazón en tus animes preferidos para guardarlos aquí!';
+                } else {
+                    existingMessage.textContent = `No se encontraron resultados para "${this.searchTerm || 'la categoría seleccionada'}"`;
+                }
+            } else if (existingMessage) {
+                existingMessage.remove();
+            }
+        }
+
+        showLoading(show) {
+            this.elements.loading.style.display = show ? 'block' : 'none';
+        }
+
+        showError(message) {
+            this.elements.grid.innerHTML = `
+                <p class="no-results" style="grid-column: 1 / -1;">
+                    ${this.sanitize(message)}
+                </p>
+            `;
+        }
+
+        // Utilidades
+        debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        sanitize(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        escapeSelector(str) {
+            return str.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\            card.innerHTML = `
+                <div class="favorite-icon ${');
+        }
+
+        // Sistema de almacenamiento mejorado
+        storage = {
+            get(key) {
+                try {
+                    const item = localStorage.getItem(key);
+                    return item ? JSON.parse(item) : null;
+                } catch (error) {
+                    console.error('Error al leer del localStorage:', error);
+                    return null;
+                }
+            },
+            set(key, value) {
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                } catch (error) {
+                    console.error('Error al escribir en localStorage:', error);
+                }
+            },
+            remove(key) {
+                try {
+                    localStorage.removeItem(key);
+                } catch (error) {
+                    console.error('Error al eliminar de localStorage:', error);
+                }
+            }
+        };
+    }
+
+    // ============================================
+    // NAVEGACIÓN MÓVIL
+    // ============================================
+    class MobileNavigation {
+        constructor() {
+            this.lastScroll = 0;
+            this.navbar = document.querySelector('.navbar');
+            this.isMobile = window.innerWidth <= 768;
+            this.throttleTimeout = null;
+            this.navHidden = false;
+            this.addEventListeners();
+        }
+
+        addEventListeners() {
+            window.addEventListener('scroll', () => this.handleScrollThrottled(), { passive: true });
+            window.addEventListener('resize', () => this.handleResize());
+        }
+        
+        handleScrollThrottled() {
+            if (!this.throttleTimeout) {
+                this.throttleTimeout = setTimeout(() => {
+                    this.performScrollAction();
+                    this.throttleTimeout = null;
+                }, 100);
+            }
+        }
+
+        performScrollAction() {
+            if (!this.isMobile || document.querySelector('.nav-links.active')) return;
+
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > this.lastScroll && currentScroll > 150) {
+                if (!this.navHidden) {
+                    this.navbar.classList.add('nav-hidden');
+                    this.navHidden = true;
+                }
+            } else {
+                if (this.navHidden) {
+                    this.navbar.classList.remove('nav-hidden');
+                    this.navHidden = false;
+                }
+            }
+            
+            this.lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        }
+
+        handleResize() {
+            this.isMobile = window.innerWidth <= 768;
+            if (!this.isMobile) {
+                this.navbar.classList.remove('nav-hidden');
+                this.navHidden = false;
+                
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    document.querySelector('.menu-toggle').textContent = '☰';
+                    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+                    this.navbar.classList.remove('active');
+                }
+            }
+            this.performScrollAction();
+        }
+    }
+
+    // ============================================
+    // SISTEMA DE ANUNCIOS AVANZADO
+    // ============================================
+    class AdSystem {
+        constructor() {
+            this.adsLoaded = false;
+            this.fallbackTimeout = 3000;
+        }
+
+        async init() {
+            try {
+                await this.loadExternalAds();
+                this.checkAdBlocker();
+            } catch (error) {
+                console.error('Error al cargar sistema de anuncios:', error);
+            }
+        }
+
+        loadExternalAds() {
+            return new Promise((resolve, reject) => {
+                // Aquí puedes cargar scripts de anuncios externos
+                // Por ahora solo usamos fallback
+                setTimeout(() => resolve(), 100);
+            });
+        }
+
+        checkAdBlocker() {
+            setTimeout(() => {
+                const adContainers = document.querySelectorAll('.ad-container');
+                adContainers.forEach(container => {
+                    // Verificar si el anuncio externo se cargó
+                    const hasExternalAd = container.querySelector('[data-external-ad]');
+                    if (!hasExternalAd && container.children.length === 0) {
+                        this.injectFallbackAd(container);
+                    }
+                });
+            }, this.fallbackTimeout);
+        }
+
+        injectFallbackAd(container) {
+            const ad = CONFIG.adConfig.fallbackAd;
+            container.innerHTML = `
+                <div class="ad-badge">PUBLICIDAD</div>
+                <img src="${ad.image}" 
+                     class="ad-image" 
+                     alt="Publicidad"
+                     loading="lazy">
+                <div class="ad-content">
+                    <h3 class="ad-title">${ad.title}</h3>
+                    <p class="ad-description">${ad.description}</p>
+                    <span class="ad-cta">${ad.cta}</span>
+                </div>
+            `;
+            container.dataset.url = ad.url;
+        }
+    }
+
+    // ============================================
+    // INICIALIZACIÓN
+    // ============================================
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Inicializar aplicación principal
+        const app = new AnimeApp();
+        
+        // Inicializar sistema de anuncios
+        const adSystem = new AdSystem();
+        await adSystem.init();
+    });
+</script>
+</body>
+</html>
