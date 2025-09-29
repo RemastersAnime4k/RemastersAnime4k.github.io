@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remastersanime4k</title>
-    <meta name="description" content="Remastersanime4k - Tu fuente principal de anime remasterizado en 4K, mangas y más">
+    <meta name="description" content="Remastersanime4k - Tu fuente principal de anime remasterizado en 4K, mangas y mas">
     <meta property="og:title" content="Remastersanime4k">
     <meta property="og:type" content="website">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -187,18 +187,12 @@
             transition: all 0.2s ease;
         }
 
-        .category-bubble:hover {
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
-        }
-
         .anime-title {
             color: #2d3436;
             text-align: center;
             margin: 1rem 0;
             font-size: 1.2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            transition: padding 0.3s ease;
         }
 
         .anime-description {
@@ -230,17 +224,17 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             z-index: 1000;
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .back-to-top.show {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .back-to-top:hover {
             transform: scale(1.1) translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .favorite-icon {
@@ -267,7 +261,6 @@
 
         .favorite-icon.active {
             color: #ff0000;
-            transform: scale(1.1);
         }
 
         .loading {
@@ -283,6 +276,7 @@
             color: #2d3436;
             width: 100%;
             margin-top: 2rem;
+            grid-column: 1 / -1;
         }
 
         .menu-toggle {
@@ -293,10 +287,8 @@
             cursor: pointer;
             color: #2d3436;
             padding: 0.5rem;
-            transition: transform 0.3s ease;
         }
 
-        /* Sistema de anuncios mejorado */
         .ad-container {
             grid-column: 1 / -1;
             background: var(--glass-bg);
@@ -312,13 +304,11 @@
             box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
             transition: all 0.3s ease;
             cursor: pointer;
-            z-index: 1;
             min-height: 180px;
         }
 
         .ad-container:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6), 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
         }
 
         .ad-badge {
@@ -331,7 +321,6 @@
             border-radius: 15px;
             font-size: 0.7rem;
             box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            z-index: 2;
         }
 
         .ad-image {
@@ -341,7 +330,6 @@
             object-fit: cover;
             border: 3px solid white;
             flex-shrink: 0;
-            transition: transform 0.3s ease;
         }
 
         .ad-content {
@@ -353,7 +341,6 @@
             color: #2d3436;
             margin: 0 0 1rem 0;
             font-size: 1.4rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .ad-description {
@@ -367,205 +354,71 @@
         .ad-cta {
             display: inline-block;
             background: var(--primary-color);
-            color: white !important;
+            color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
-            text-decoration: none;
             font-family: 'Comic Neue', cursive;
-            transition: all 0.3s ease;
-            border: 2px solid white;
-        }
-
-        .ad-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                padding-bottom: 50px;
-            }
+            body { padding: 10px; }
             
             .navbar {
                 gap: 1rem;
                 padding: 1rem;
-                position: sticky;
-                top: 20px;
-                z-index: 1000;
-                overflow: visible;
-                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-            }
-            
-            .nav-hidden {
-                transform: translateY(-150%) !important;
-                transition-duration: 0.3s;
+                top: 10px;
             }
             
             .nav-links {
-                position: sticky;
+                display: none;
+                position: absolute;
+                top: 100%;
                 left: 0;
                 right: 0;
                 background: var(--glass-bg);
                 backdrop-filter: blur(15px);
                 margin: 10px;
-                display: none;
-                opacity: 1;
-                transform: none;
-                transition: none;
-                max-height: none;
-                z-index: 1001;
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
                 padding: 1.5rem;
-                gap: 1rem;
+                border-radius: 12px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
             }
 
             .nav-links.active {
                 display: flex;
                 flex-direction: column;
-                animation: slideDown 0.3s ease-out;
-                background: rgba(255, 255, 255, 0.15);
-                border-radius: 12px;
-                backdrop-filter: blur(15px);
-                position: sticky;
-            }
-            
-            @keyframes slideDown {
-                from {
-                    transform: translateY(-10px);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
             }
             
             .menu-toggle {
+                display: flex;
                 order: 1;
                 margin-left: auto;
                 background: rgba(255, 255, 255, 0.2);
                 border-radius: 50%;
                 width: 40px;
                 height: 40px;
-                display: flex;
                 align-items: center;
                 justify-content: center;
-            }
-            
-            .menu-toggle:hover {
-                background: rgba(255, 255, 255, 0.2);
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            }
-
-            .menu-toggle.active {
-                transform: rotate(90deg) scale(1.1);
-            }
-            
-            .navbar.active {
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                border-radius: 20px;
-            }
-
-            .search-input {
-                width: auto;
-                font-size: 1.1rem;
-                padding: 0.9rem 1.3rem;
             }
             
             .search-container {
                 order: 2;
                 width: 100%;
-                min-width: auto;
             }
-            
-            .nav-links a {
-                justify-content: center;
-                padding: 0.8rem;
-            }
-            
+
             .anime-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
                 padding: 1rem;
             }
 
-            .anime-card {
-                border-radius: 15px;
-                padding: 0.8rem;
-                transition: none;
-            }
-            
-            .anime-card:active {
-                transform: scale(0.98);
-            }
-            
-            .anime-image {
-                height: 375px;
-            }
-            
-            .favorite-icon {
-                font-size: 1.3rem;
-            }
-            
-            .favorite-icon:active {
-                transform: scale(1.3);
-            }
-            
-            .category-bubble {
-                font-size: 0.8rem;
-                padding: 0.2rem 0.6rem;
-            }
-
             .ad-container {
                 flex-direction: column;
                 text-align: center;
-                padding: 1rem;
             }
 
             .ad-image {
                 width: 100%;
                 height: 200px;
-            }
-
-            .ad-badge {
-                position: static;
-                margin-bottom: 1rem;
-                width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .back-to-top {
-                width: 45px;
-                height: 45px;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-        
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .anime-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.8rem;
-                padding: 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .anime-image {
-                height: 320px;
-            }
-
-            .search-container {
-                max-width: 350px;
-            }
-
-            .category-bubbles {
-                gap: 8px;
             }
         }
 
@@ -574,25 +427,12 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1.3); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar" aria-label="Navegación principal">
+    <nav class="navbar">
         <h1 class="site-title">Remastersanime4k</h1>
-        <button class="menu-toggle" aria-label="Menú">☰</button>
+        <button class="menu-toggle" aria-label="Menu">&#9776;</button>
         <div class="nav-links">
             <a href="#home" class="active">Inicio</a>
             <a href="#anime">Anime</a>
@@ -602,581 +442,398 @@
             <a href="#favorites">Favoritos</a>
         </div>
         <div class="search-container">
-            <input type="text" class="search-input" 
-                   placeholder="Buscar contenido..."
-                   aria-label="Buscar contenido">
+            <input type="text" class="search-input" placeholder="Buscar contenido...">
         </div>
     </nav>
 
-    <div class="loading">🔄 Cargando...</div>
+    <div class="loading">Cargando...</div>
     <div class="anime-grid"></div>
-    <button class="back-to-top" aria-label="Volver al inicio">↑</button>
+    <button class="back-to-top">&#8593;</button>
 
 <script>
-    // ============================================
-    // CONFIGURACIÓN
-    // ============================================
-    const CONFIG = {
-        dataSource: 'animeData.json',
-        adFrequency: 18, // Mostrar anuncio cada N cards
-        adConfig: {
-            fallbackAd: {
-                url: 'https://remastersanime4k.github.io/Espacio-Publicitario.html',
-                image: 'https://i.pinimg.com/736x/11/15/2d/11152dc45f236704097ab8582b865acb.jpg',
-                title: '¡Tu apoyo hace la diferencia! ❤️',
-                description: 'Tu visita a los patrocinadores hace posible que sigamos compartiendo tu anime favorito en 4K',
-                cta: 'Visitar'
-            }
-        },
-        storage: {
-            favoritesKey: 'anime_favorites',
-            categoryKey: 'selected_category'
+const CONFIG = {
+    dataSource: 'animeData.json',
+    adFrequency: 18,
+    adConfig: {
+        fallbackAd: {
+            url: 'https://remastersanime4k.github.io/Espacio-Publicitario.html',
+            image: 'https://i.pinimg.com/736x/11/15/2d/11152dc45f236704097ab8582b865acb.jpg',
+            title: 'Tu apoyo hace la diferencia',
+            description: 'Tu visita a los patrocinadores hace posible que sigamos compartiendo tu anime favorito en 4K',
+            cta: 'Visitar'
         }
-    };
+    },
+    storage: {
+        favoritesKey: 'anime_favorites',
+        categoryKey: 'selected_category'
+    }
+};
 
-    // ============================================
-    // CLASE PRINCIPAL DE LA APLICACIÓN
-    // ============================================
-    class AnimeApp {
-        constructor() {
-            this.currentCategory = 'home';
-            this.searchTerm = '';
-            this.animeData = [];
-            this.elements = this.cacheElements();
-            this.mobileNav = null;
-            this.init();
+class AnimeApp {
+    constructor() {
+        this.currentCategory = 'home';
+        this.searchTerm = '';
+        this.animeData = [];
+        this.elements = this.cacheElements();
+        this.init();
+    }
+
+    cacheElements() {
+        return {
+            grid: document.querySelector('.anime-grid'),
+            loading: document.querySelector('.loading'),
+            searchInput: document.querySelector('.search-input'),
+            navLinks: document.querySelectorAll('.nav-links a'),
+            navLinksContainer: document.querySelector('.nav-links'),
+            menuToggle: document.querySelector('.menu-toggle'),
+            navbar: document.querySelector('.navbar'),
+            backToTop: document.querySelector('.back-to-top')
+        };
+    }
+
+    async init() {
+        this.showLoading(true);
+        await this.loadData();
+        this.restoreState();
+        this.setupEventListeners();
+        this.filterAndRender();
+    }
+
+    async loadData() {
+        try {
+            const response = await fetch(CONFIG.dataSource);
+            if (!response.ok) throw new Error('Error HTTP: ' + response.status);
+            this.animeData = await response.json();
+        } catch (error) {
+            console.error("Error al cargar datos:", error);
+            this.showError('Error al cargar los datos');
         }
+    }
 
-        cacheElements() {
-            return {
-                grid: document.querySelector('.anime-grid'),
-                loading: document.querySelector('.loading'),
-                searchInput: document.querySelector('.search-input'),
-                navLinks: document.querySelectorAll('.nav-links a'),
-                navLinksContainer: document.querySelector('.nav-links'),
-                menuToggle: document.querySelector('.menu-toggle'),
-                navbar: document.querySelector('.navbar'),
-                backToTop: document.querySelector('.back-to-top')
-            };
-        }
+    restoreState() {
+        this.currentCategory = this.storage.get(CONFIG.storage.categoryKey) || 'home';
+        this.elements.navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.toggle('active', href === '#' + this.currentCategory);
+        });
+    }
 
-        async init() {
-            this.showLoading(true);
-            await this.loadData();
-            this.restoreState();
-            this.setupEventListeners();
-            this.mobileNav = new MobileNavigation();
+    setupEventListeners() {
+        this.elements.navLinksContainer.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+            e.preventDefault();
+            this.handleCategoryChange(link);
+        });
+
+        this.elements.searchInput.addEventListener('input', this.debounce((e) => {
+            this.searchTerm = e.target.value.trim();
             this.filterAndRender();
-        }
+        }, 300));
 
-        async loadData() {
-            try {
-                const response = await fetch(CONFIG.dataSource);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                this.animeData = await response.json();
-            } catch (error) {
-                console.error("Error al cargar datos:", error);
-                this.showError('Error al cargar los datos. Por favor, inténtalo más tarde.');
-            }
-        }
+        this.elements.menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMobileMenu();
+        });
 
-        restoreState() {
-            this.currentCategory = this.storage.get(CONFIG.storage.categoryKey) || 'home';
-            this.elements.navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${this.currentCategory}`);
-            });
-        }
-
-        setupEventListeners() {
-            // Navegación con delegación de eventos
-            this.elements.navLinksContainer.addEventListener('click', (e) => {
-                const link = e.target.closest('a');
-                if (!link) return;
-                e.preventDefault();
-                this.handleCategoryChange(link);
-            });
-
-            // Búsqueda con debounce
-            this.elements.searchInput.addEventListener('input', this.debounce((e) => {
-                this.searchTerm = this.sanitize(e.target.value.trim());
-                this.filterAndRender();
-            }, 300));
-
-            // Menú móvil
-            this.elements.menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleMobileMenu();
-            });
-
-            // Cerrar menú al hacer clic fuera
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.navbar') && this.elements.navLinksContainer.classList.contains('active')) {
-                    this.closeMobileMenu();
-                }
-            });
-
-            // Grid con delegación de eventos
-            this.elements.grid.addEventListener('click', (e) => {
-                this.handleGridClick(e);
-            });
-
-            // Scroll con RequestAnimationFrame
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        this.handleScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
-
-            // Back to top
-            this.elements.backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        handleCategoryChange(link) {
-            const newCategory = link.getAttribute('href').slice(1);
-            if (this.currentCategory === newCategory && !this.searchTerm) return;
-
-            this.currentCategory = newCategory;
-            this.storage.set(CONFIG.storage.categoryKey, newCategory);
-
-            this.elements.navLinks.forEach(a => a.classList.remove('active'));
-            link.classList.add('active');
-            
-            this.closeMobileMenu();
-            this.filterAndRender();
-        }
-
-        handleGridClick(e) {
-            // Manejar favoritos
-            const favoriteIcon = e.target.closest('.favorite-icon');
-            if (favoriteIcon) {
-                e.stopPropagation();
-                const card = favoriteIcon.closest('.anime-card');
-                const title = card.dataset.title;
-                this.toggleFavorite(title);
-                return;
-            }
-
-            // Manejar clic en card
-            const card = e.target.closest('.anime-card');
-            if (card && !e.target.closest('a, button')) {
-                const url = card.dataset.link;
-                if (url) window.open(url, '_blank', 'noopener,noreferrer');
-            }
-
-            // Manejar clic en anuncio
-            const adContainer = e.target.closest('.ad-container');
-            if (adContainer && !e.target.closest('a')) {
-                const link = adContainer.dataset.url;
-                if (link) window.open(link, '_blank', 'noopener,noreferrer');
-            }
-        }
-
-        handleScroll() {
-            // Back to top button
-            this.elements.backToTop.classList.toggle('show', window.scrollY > 300);
-
-            // Cerrar menú móvil al hacer scroll
-            if (this.elements.navLinksContainer.classList.contains('active')) {
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && this.elements.navLinksContainer.classList.contains('active')) {
                 this.closeMobileMenu();
             }
+        });
+
+        this.elements.grid.addEventListener('click', (e) => {
+            this.handleGridClick(e);
+        });
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        this.elements.backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    handleCategoryChange(link) {
+        const newCategory = link.getAttribute('href').slice(1);
+        if (this.currentCategory === newCategory && !this.searchTerm) return;
+
+        this.currentCategory = newCategory;
+        this.storage.set(CONFIG.storage.categoryKey, newCategory);
+
+        this.elements.navLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+        
+        this.closeMobileMenu();
+        this.filterAndRender();
+    }
+
+    handleGridClick(e) {
+        const favoriteIcon = e.target.closest('.favorite-icon');
+        if (favoriteIcon) {
+            e.stopPropagation();
+            const card = favoriteIcon.closest('.anime-card');
+            const title = card.dataset.title;
+            this.toggleFavorite(title);
+            return;
         }
 
-        toggleMobileMenu() {
-            const isOpening = !this.elements.navLinksContainer.classList.contains('active');
-            this.elements.navLinksContainer.classList.toggle('active');
-            this.elements.menuToggle.textContent = isOpening ? '×' : '☰';
-            this.elements.menuToggle.setAttribute('aria-expanded', isOpening);
-            this.elements.navbar.classList.toggle('active', isOpening);
+        const card = e.target.closest('.anime-card');
+        if (card && !e.target.closest('a, button')) {
+            const url = card.dataset.link;
+            if (url) window.open(url, '_blank');
         }
 
-        closeMobileMenu() {
-            this.elements.navLinksContainer.classList.remove('active');
-            this.elements.menuToggle.textContent = '☰';
-            this.elements.menuToggle.setAttribute('aria-expanded', 'false');
-            this.elements.navbar.classList.remove('active');
+        const adContainer = e.target.closest('.ad-container');
+        if (adContainer) {
+            const link = adContainer.dataset.url;
+            if (link) window.open(link, '_blank');
+        }
+    }
+
+    handleScroll() {
+        this.elements.backToTop.classList.toggle('show', window.scrollY > 300);
+        
+        if (this.elements.navLinksContainer.classList.contains('active')) {
+            this.closeMobileMenu();
+        }
+    }
+
+    toggleMobileMenu() {
+        const isOpening = !this.elements.navLinksContainer.classList.contains('active');
+        this.elements.navLinksContainer.classList.toggle('active');
+        this.elements.menuToggle.textContent = isOpening ? '\u00D7' : '\u2630';
+    }
+
+    closeMobileMenu() {
+        this.elements.navLinksContainer.classList.remove('active');
+        this.elements.menuToggle.textContent = '\u2630';
+    }
+
+    toggleFavorite(title) {
+        const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
+        const index = favorites.indexOf(title);
+        
+        if (index === -1) {
+            favorites.push(title);
+        } else {
+            favorites.splice(index, 1);
+        }
+        
+        this.storage.set(CONFIG.storage.favoritesKey, favorites);
+        
+        const card = this.elements.grid.querySelector('[data-title="' + title + '"]');
+        if (card) {
+            const icon = card.querySelector('.favorite-icon');
+            icon.classList.toggle('active', index === -1);
         }
 
-        toggleFavorite(title) {
+        if (this.currentCategory === 'favorites') {
+            this.filterAndRender();
+        }
+    }
+
+    filterAndRender() {
+        if (!this.animeData.length) return;
+
+        const filteredData = this.getFilteredData();
+        
+        this.showLoading(true);
+        requestAnimationFrame(() => {
+            this.render(filteredData);
+            this.showLoading(false);
+            this.updateNoResultsMessage(filteredData);
+        });
+    }
+
+    getFilteredData() {
+        if (this.currentCategory === 'favorites') {
             const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
-            const index = favorites.indexOf(title);
-            
-            if (index === -1) {
-                favorites.push(title);
-            } else {
-                favorites.splice(index, 1);
-            }
-            
-            this.storage.set(CONFIG.storage.favoritesKey, favorites);
-            
-            // Actualizar UI inmediatamente
-            const card = this.elements.grid.querySelector(`[data-title="${this.escapeSelector(title)}"]`);
-            if (card) {
-                const icon = card.querySelector('.favorite-icon');
-                icon.classList.toggle('active', index === -1);
-                icon.setAttribute('aria-pressed', index === -1);
-            }
-
-            // Re-renderizar si estamos en favoritos
-            if (this.currentCategory === 'favorites') {
-                this.filterAndRender();
-            }
-        }
-
-        filterAndRender() {
-            if (!this.animeData.length) {
-                this.showError('No hay datos disponibles');
-                return;
-            }
-
-            const filteredData = this.getFilteredData();
-            
-            this.showLoading(true);
-            requestAnimationFrame(() => {
-                this.render(filteredData);
-                this.showLoading(false);
-                this.updateNoResultsMessage(filteredData);
-                this.setupIntersectionObserver();
-            });
-        }
-
-        getFilteredData() {
-            if (this.currentCategory === 'favorites') {
-                const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
-                return this.animeData.filter(item =>
-                    favorites.includes(item.title) &&
-                    item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-                );
-            }
-
             return this.animeData.filter(item =>
-                (this.currentCategory === 'home' || item.categories?.includes(this.currentCategory)) &&
+                favorites.includes(item.title) &&
                 item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
             );
         }
 
-        render(data) {
-            this.elements.grid.innerHTML = '';
-            const fragment = document.createDocumentFragment();
-            const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
+        return this.animeData.filter(item =>
+            (this.currentCategory === 'home' || (item.categories && item.categories.includes(this.currentCategory))) &&
+            item.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+    }
 
-            data.forEach((item, index) => {
-                // Insertar anuncio cada N cards
-                if (index > 0 && index % CONFIG.adFrequency === 0) {
-                    fragment.appendChild(this.createAdElement());
-                }
+    render(data) {
+        this.elements.grid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+        const favorites = this.storage.get(CONFIG.storage.favoritesKey) || [];
 
-                fragment.appendChild(this.createCard(item, favorites));
-            });
+        data.forEach((item, index) => {
+            if (index > 0 && index % CONFIG.adFrequency === 0) {
+                fragment.appendChild(this.createAdElement());
+            }
+            fragment.appendChild(this.createCard(item, favorites));
+        });
 
-            this.elements.grid.appendChild(fragment);
-        }
+        this.elements.grid.appendChild(fragment);
+    }
 
-        createCard(item, favorites) {
-            const card = document.createElement('div');
-            card.className = 'anime-card';
-            card.dataset.link = item.url;
-            card.dataset.title = item.title;
+    createCard(item, favorites) {
+        const card = document.createElement('div');
+        card.className = 'anime-card';
+        card.dataset.link = item.url;
+        card.dataset.title = item.title;
 
-            const isFavorite = favorites.includes(item.title);
-            
-            card.innerHTML = `
-                <div class="favorite-icon ${isFavorite ? 'active' : ''}" 
-                     role="button" 
-                     aria-pressed="${isFavorite}" 
-                     aria-label="Marcar como favorito"
-                     tabindex="0">
-                    ♥
-                </div>
-                <div class="category-bubbles">
-                    ${(item.categories || []).map(cat => 
-                        `<div class="category-bubble">${this.sanitize(cat.toUpperCase())}</div>`
-                    ).join('')}
-                </div>
-                <img src="${this.sanitize(item.image)}"
-                     alt="Portada de ${this.sanitize(item.title)}"
-                     class="anime-image"
-                     loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/300x400?text=Imagen+no+disponible'">
-                <h3 class="anime-title">${this.sanitize(item.title)}</h3>
-                <div class="anime-description">
-                    <p class="description-content">${this.sanitize(item.description)}</p>
-                </div>
-            `;
-
-            return card;
-        }
-
-        createAdElement() {
-            const ad = CONFIG.adConfig.fallbackAd;
-            const container = document.createElement('div');
-            container.className = 'ad-container';
-            container.dataset.url = ad.url;
-
-            container.innerHTML = `
-                <div class="ad-badge">PUBLICIDAD</div>
-                <img src="${ad.image}" 
-                     class="ad-image" 
-                     alt="Publicidad"
-                     loading="lazy">
-                <div class="ad-content">
-                    <h3 class="ad-title">${ad.title}</h3>
-                    <p class="ad-description">${ad.description}</p>
-                    <span class="ad-cta">${ad.cta}</span>
-                </div>
-            `;
-
-            return container;
-        }
-
-        setupIntersectionObserver() {
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { rootMargin: '0px 0px -50px 0px', threshold: 0.1 }
-            );
-
-            this.elements.grid.querySelectorAll('.anime-card, .ad-container').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+        const isFavorite = favorites.includes(item.title);
+        
+        const favoriteDiv = document.createElement('div');
+        favoriteDiv.className = 'favorite-icon' + (isFavorite ? ' active' : '');
+        favoriteDiv.textContent = '\u2665';
+        
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'category-bubbles';
+        if (item.categories) {
+            item.categories.forEach(cat => {
+                const bubble = document.createElement('div');
+                bubble.className = 'category-bubble';
+                bubble.textContent = cat.toUpperCase();
+                categoryDiv.appendChild(bubble);
             });
         }
+        
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = 'Portada de ' + item.title;
+        img.className = 'anime-image';
+        img.loading = 'lazy';
+        
+        const title = document.createElement('h3');
+        title.className = 'anime-title';
+        title.textContent = item.title;
+        
+        const desc = document.createElement('div');
+        desc.className = 'anime-description';
+        const descP = document.createElement('p');
+        descP.textContent = item.description;
+        desc.appendChild(descP);
+        
+        card.appendChild(favoriteDiv);
+        card.appendChild(categoryDiv);
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(desc);
 
-        updateNoResultsMessage(data) {
-            let existingMessage = document.querySelector('.no-results');
+        return card;
+    }
+
+    createAdElement() {
+        const ad = CONFIG.adConfig.fallbackAd;
+        const container = document.createElement('div');
+        container.className = 'ad-container';
+        container.dataset.url = ad.url;
+
+        const badge = document.createElement('div');
+        badge.className = 'ad-badge';
+        badge.textContent = 'PUBLICIDAD';
+        
+        const img = document.createElement('img');
+        img.src = ad.image;
+        img.className = 'ad-image';
+        img.alt = 'Publicidad';
+        img.loading = 'lazy';
+        
+        const content = document.createElement('div');
+        content.className = 'ad-content';
+        
+        const title = document.createElement('h3');
+        title.className = 'ad-title';
+        title.textContent = ad.title;
+        
+        const desc = document.createElement('p');
+        desc.className = 'ad-description';
+        desc.textContent = ad.description;
+        
+        const cta = document.createElement('span');
+        cta.className = 'ad-cta';
+        cta.textContent = ad.cta;
+        
+        content.appendChild(title);
+        content.appendChild(desc);
+        content.appendChild(cta);
+        
+        container.appendChild(badge);
+        container.appendChild(img);
+        container.appendChild(content);
+
+        return container;
+    }
+
+    updateNoResultsMessage(data) {
+        let existingMessage = document.querySelector('.no-results');
+        
+        if (data.length === 0) {
+            if (!existingMessage) {
+                existingMessage = document.createElement('p');
+                existingMessage.className = 'no-results';
+                this.elements.grid.appendChild(existingMessage);
+            }
             
-            if (data.length === 0) {
-                if (!existingMessage) {
-                    existingMessage = document.createElement('p');
-                    existingMessage.className = 'no-results';
-                    existingMessage.style.gridColumn = '1 / -1';
-                    this.elements.grid.insertAdjacentElement('afterend', existingMessage);
-                }
-                
-                if (this.currentCategory === 'favorites') {
-                    existingMessage.textContent = this.searchTerm 
-                        ? `No se encontraron favoritos que coincidan con "${this.searchTerm}".`
-                        : 'Aún no has añadido nada a favoritos. ¡Toca el corazón en tus animes preferidos para guardarlos aquí!';
-                } else {
-                    existingMessage.textContent = `No se encontraron resultados para "${this.searchTerm || 'la categoría seleccionada'}"`;
-                }
-            } else if (existingMessage) {
-                existingMessage.remove();
+            if (this.currentCategory === 'favorites') {
+                existingMessage.textContent = this.searchTerm 
+                    ? 'No se encontraron favoritos'
+                    : 'Aun no has anadido favoritos';
+            } else {
+                existingMessage.textContent = 'No se encontraron resultados';
             }
+        } else if (existingMessage) {
+            existingMessage.remove();
         }
+    }
 
-        showLoading(show) {
-            this.elements.loading.style.display = show ? 'block' : 'none';
-        }
+    showLoading(show) {
+        this.elements.loading.style.display = show ? 'block' : 'none';
+    }
 
-        showError(message) {
-            this.elements.grid.innerHTML = `
-                <p class="no-results" style="grid-column: 1 / -1;">
-                    ${this.sanitize(message)}
-                </p>
-            `;
-        }
+    showError(message) {
+        this.elements.grid.innerHTML = '<p class="no-results">' + message + '</p>';
+    }
 
-        // Utilidades
-        debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        sanitize(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        escapeSelector(str) {
-            return str.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\            card.innerHTML = `
-                <div class="favorite-icon ${');
-        }
-
-        // Sistema de almacenamiento mejorado
-        storage = {
-            get(key) {
-                try {
-                    const item = localStorage.getItem(key);
-                    return item ? JSON.parse(item) : null;
-                } catch (error) {
-                    console.error('Error al leer del localStorage:', error);
-                    return null;
-                }
-            },
-            set(key, value) {
-                try {
-                    localStorage.setItem(key, JSON.stringify(value));
-                } catch (error) {
-                    console.error('Error al escribir en localStorage:', error);
-                }
-            },
-            remove(key) {
-                try {
-                    localStorage.removeItem(key);
-                } catch (error) {
-                    console.error('Error al eliminar de localStorage:', error);
-                }
-            }
+    debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
         };
     }
 
-    // ============================================
-    // NAVEGACIÓN MÓVIL
-    // ============================================
-    class MobileNavigation {
-        constructor() {
-            this.lastScroll = 0;
-            this.navbar = document.querySelector('.navbar');
-            this.isMobile = window.innerWidth <= 768;
-            this.throttleTimeout = null;
-            this.navHidden = false;
-            this.addEventListeners();
-        }
-
-        addEventListeners() {
-            window.addEventListener('scroll', () => this.handleScrollThrottled(), { passive: true });
-            window.addEventListener('resize', () => this.handleResize());
-        }
-        
-        handleScrollThrottled() {
-            if (!this.throttleTimeout) {
-                this.throttleTimeout = setTimeout(() => {
-                    this.performScrollAction();
-                    this.throttleTimeout = null;
-                }, 100);
-            }
-        }
-
-        performScrollAction() {
-            if (!this.isMobile || document.querySelector('.nav-links.active')) return;
-
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > this.lastScroll && currentScroll > 150) {
-                if (!this.navHidden) {
-                    this.navbar.classList.add('nav-hidden');
-                    this.navHidden = true;
-                }
-            } else {
-                if (this.navHidden) {
-                    this.navbar.classList.remove('nav-hidden');
-                    this.navHidden = false;
-                }
-            }
-            
-            this.lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-        }
-
-        handleResize() {
-            this.isMobile = window.innerWidth <= 768;
-            if (!this.isMobile) {
-                this.navbar.classList.remove('nav-hidden');
-                this.navHidden = false;
-                
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    document.querySelector('.menu-toggle').textContent = '☰';
-                    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
-                    this.navbar.classList.remove('active');
-                }
-            }
-            this.performScrollAction();
-        }
-    }
-
-    // ============================================
-    // SISTEMA DE ANUNCIOS AVANZADO
-    // ============================================
-    class AdSystem {
-        constructor() {
-            this.adsLoaded = false;
-            this.fallbackTimeout = 3000;
-        }
-
-        async init() {
+    storage = {
+        get(key) {
             try {
-                await this.loadExternalAds();
-                this.checkAdBlocker();
+                const item = localStorage.getItem(key);
+                return item ? JSON.parse(item) : null;
             } catch (error) {
-                console.error('Error al cargar sistema de anuncios:', error);
+                return null;
+            }
+        },
+        set(key, value) {
+            try {
+                localStorage.setItem(key, JSON.stringify(value));
+            } catch (error) {
+                console.error('Error storage:', error);
             }
         }
+    };
+}
 
-        loadExternalAds() {
-            return new Promise((resolve, reject) => {
-                // Aquí puedes cargar scripts de anuncios externos
-                // Por ahora solo usamos fallback
-                setTimeout(() => resolve(), 100);
-            });
-        }
-
-        checkAdBlocker() {
-            setTimeout(() => {
-                const adContainers = document.querySelectorAll('.ad-container');
-                adContainers.forEach(container => {
-                    // Verificar si el anuncio externo se cargó
-                    const hasExternalAd = container.querySelector('[data-external-ad]');
-                    if (!hasExternalAd && container.children.length === 0) {
-                        this.injectFallbackAd(container);
-                    }
-                });
-            }, this.fallbackTimeout);
-        }
-
-        injectFallbackAd(container) {
-            const ad = CONFIG.adConfig.fallbackAd;
-            container.innerHTML = `
-                <div class="ad-badge">PUBLICIDAD</div>
-                <img src="${ad.image}" 
-                     class="ad-image" 
-                     alt="Publicidad"
-                     loading="lazy">
-                <div class="ad-content">
-                    <h3 class="ad-title">${ad.title}</h3>
-                    <p class="ad-description">${ad.description}</p>
-                    <span class="ad-cta">${ad.cta}</span>
-                </div>
-            `;
-            container.dataset.url = ad.url;
-        }
-    }
-
-    // ============================================
-    // INICIALIZACIÓN
-    // ============================================
-    document.addEventListener('DOMContentLoaded', async () => {
-        // Inicializar aplicación principal
-        const app = new AnimeApp();
-        
-        // Inicializar sistema de anuncios
-        const adSystem = new AdSystem();
-        await adSystem.init();
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    new AnimeApp();
+});
 </script>
 </body>
 </html>
