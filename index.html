@@ -595,6 +595,22 @@
                 transition: none !important;
             }
         }
+
+		::-webkit-scrollbar {
+		    width: 8px;
+		}
+		::-webkit-scrollbar-track {
+		    background: rgba(255, 255, 255, 0.2);
+		    border-radius: 10px;
+		}
+		::-webkit-scrollbar-thumb {
+		    background: var(--primary-color);
+		    border-radius: 10px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+		    background: #ff5252;
+		}
+		
     </style>
     <script>
     // Función para cargar anuncios de forma dinámica
