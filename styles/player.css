@@ -42,6 +42,7 @@
             border-radius: 15px;
             padding: 0.8rem 2rem;
 			margin: 0 auto 2rem;
+			margin-bottom: 2rem;
             display: flex;
 			align-items: center;
             justify-content: space-between;
@@ -51,12 +52,12 @@
             left: 20px;
             right: 20px;
             z-index: 1000;
-            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+			box-shadow: 3px 3px 6px #00000045, -3px -3px 9px rgb(0 0 0 / 25%);
             border: 2px solid rgba(255, 255, 255, 0.3);
             font-family: 'Kanit', sans-serif;
 			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 			transform: translateY(0);
-
+			flex-wrap: wrap;
         }
 
 		.nav-hidden {
@@ -1112,3 +1113,4 @@
 		    background: #ff5252;
 		}
 		
+
