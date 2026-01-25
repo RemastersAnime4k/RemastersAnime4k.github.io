@@ -1,0 +1,325 @@
+		/* === VIDEO PLAYER STYLES === */
+		.hidden { display: none !important; }
+		.video-modal {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90%;
+			max-width: 1000px;
+			height: 70vh;
+			z-index: 9999;
+			border-radius: 20px;
+			overflow: hidden;
+			display: none;
+			background: var(--glass-bg) !important;
+			backdrop-filter: blur(16px) !important;
+			-webkit-backdrop-filter: blur(16px) !important;
+			border: 1px solid var(--glass-border) !important;
+			box-shadow: var(--glass-shadow) !important;
+		}
+        .video-modal:fullscreen, 
+        .video-modal.modal-is-actually-fullscreen { 
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            border-radius: 0 !important;
+            background: #000 !important; 
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+
+		.video-container {
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			position: relative;
+			cursor: auto;
+		}
+
+		.video-container.cursor-hidden {
+			cursor: none;
+		}
+
+		.video-player {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.controls-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 15px 20px;
+			-webkit-backdrop-filter: blur(10px);
+			background: rgb(0 0 0 / 15%); 
+			border-top: 1px solid var(--glass-border); 
+			backdrop-filter: blur(10px); 
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            pointer-events: none;
+            transition: 
+                opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0.25s; /* Delay visibility change on hide */
+		}
+        .video-modal:fullscreen .controls-container,
+        .video-modal.modal-is-actually-fullscreen .controls-container { 
+            background: rgba(0, 0, 0, 0.5) !important; 
+        }
+
+
+        .video-modal.controls-visible .controls-container {
+            opacity: 1; 
+            transform: translateY(0); 
+            visibility: visible; 
+            pointer-events: auto;
+            transition-delay: 0s; /* Ensure visibility transition is immediate on show */
+        }
+
+		.progress-container {
+		    position: relative;
+			height: 4px;
+			background: rgba(255,255,255,0.2);
+			margin-bottom: 12px;
+			cursor: pointer;
+			border-radius: 2px;
+		}
+        .progress-container:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+		.buffer-bar {
+			position: absolute;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.4);
+			top: 0;
+			left: 0;
+			width: 0;
+			pointer-events: none;
+            border-radius: 2px;
+		}
+
+		.progress-bar {
+			position: relative;
+			height: 100%;
+			background: var(--primary-color);
+			width: 0;
+			z-index: 2;
+			transition: width 0.1s linear;
+			border-radius: 2px;
+		}
+
+		.buttons-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 15px;
+		}
+
+		.left-controls, .right-controls {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.play-pause, .cc-button, .fullscreen {
+			color: white;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			cursor: pointer;
+			border-radius: 8px;
+			align-items: center;
+			justify-content: center;
+			backdrop-filter: blur(5px);
+			background: rgba(255,255,255,0.05);
+			border: 1px solid var(--glass-border);
+			transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+		}
+        .play-pause:focus-visible, .cc-button:focus-visible, .fullscreen:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 1px;
+        }
+
+		.play-pause:hover, .cc-button:hover, .fullscreen:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 10px var(--primary-color);
+			background: var(--primary-color);
+		}
+        .cc-button.active {
+            background: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+
+		.time-display {
+			color: white;
+			font-family: 'Inter', sans-serif;
+			font-size: 0.9em;
+			text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            user-select: none;
+		}
+
+		.volume-control {
+			height: 4px;
+			background: rgba(255,255,255,0.1);
+			-webkit-appearance: none;
+			appearance: none;
+			border-radius: 2px;
+			width: 100px;
+            cursor: pointer;
+		}
+        .volume-control:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+		.volume-control::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 14px;
+			height: 14px;
+			background: var(--primary-color);
+			border-radius: 50%;
+			border: 2px solid white;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+		}
+        .volume-control::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+
+		.close-modal {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			background: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: 50%;
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+			z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 1;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: 
+                opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0.25s,
+                transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+		}
+        .video-modal.controls-visible .close-modal {
+            opacity: 1; 
+            visibility: visible; 
+            pointer-events: auto;
+            transition-delay: 0s; /* Ensure visibility transition is immediate on show */
+        }
+
+
+		.close-modal:hover {
+			transform: scale(1.1);
+		}
+
+		.loading {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			display: none;
+			background: rgba(0,0,0,0.7);
+			padding: 12px 24px;
+			border-radius: 8px;
+			backdrop-filter: blur(10px);
+            z-index: 10;
+            user-select: none;
+		}
+
+		.center-play {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			backdrop-filter: blur(10px);
+			cursor: pointer;
+			opacity: 0;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--glass-bg) !important;
+			border: 2px solid var(--glass-border) !important;
+            z-index: 5;
+            -webkit-tap-highlight-color: transparent;
+		}
+
+		.center-play.visible {
+			opacity: 1;
+		}
+
+		.center-play::after {
+			content: '▶';
+			color: white;
+			font-size: 30px;
+			margin-left: 3px;
+		}
+
+		.center-play.playing::after {
+			content: '⏸';
+			margin-left: 0;
+		}
+
+		/* === Subtitles Customization (::cue pseudo-element) === */
+		video::cue {
+			background-color: transparent;
+			color: white;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 600;
+			text-shadow: 
+                2px 2px 0 #000, 
+                -2px 2px 0 #000, 
+                -2px -2px 0 #000, 
+                2px -2px 0 #000,
+                2px 0px 0 #000,
+                0px 2px 0 #000,
+                -2px 0px 0 #000,
+                0px -2px 0 #000,
+                3px 3px 5px rgba(0,0,0,0.8); /* Drop shadow + Outline effect */
+			/* Responsive font size: starts at 1.5rem, grows with view width up to 2.5rem */
+			font-size: clamp(1.5rem, 4vw, 2.8rem); 
+            line-height: normal;
+		}
+
+		/* Lift subtitles to avoid overlap with controls (WebKit/Blink only - Chrome, Edge, Safari) */
+		video::-webkit-media-text-track-container {
+			transform: translateY(-80px);
+			overflow: visible !important;
+		}
+

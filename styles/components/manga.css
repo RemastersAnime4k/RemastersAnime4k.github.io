@@ -1,0 +1,284 @@
+		/* === MANGA PLAYER STYLES (Enhanced) === */
+		.manga-modal { display: none; } /* Default hidden */
+		.manga-modal.flex { display: flex !important; } /* Use !important */
+
+		.manga-modal {
+		  position: fixed;
+		  inset: 0;
+		  background: rgba(0, 0, 0, 0.9); /* Slightly darker for full screen */
+		  align-items: center;
+		  justify-content: center;
+		  z-index: 1000;
+          touch-action: none;
+		}
+
+        /* Styles for the main content box of the manga modal (bg-gray-900) */
+		.manga-modal > .bg-gray-900 {
+          background: #1a1a1a;
+          width: 100%;
+          height: 100%;
+          padding: 0; /* No padding on the modal box itself for full screen */
+          border-radius: 0; /* No rounded corners for full screen */
+          box-shadow: none; /* No shadow for full screen */
+		  display: flex;
+		  flex-direction: column;
+          overflow: hidden; /* Important to contain children */
+          position: relative; /* For absolute positioning of zoom controls */
+		}
+
+		.close-manga {
+		  border: none;
+		  font-size: 1.5rem;
+		  cursor: pointer;
+		  position: absolute;
+          top: calc(env(safe-area-inset-top, 0px) + 10px);
+          right: calc(env(safe-area-inset-right, 0px) + 10px);
+		  background: var(--primary-color);
+		  color: white;
+		  padding: 8px 12px;
+		  border-radius: 20px;
+		  cursor: pointer;
+          line-height: 1;
+          z-index: 1002; /* Higher than other controls */
+          -webkit-tap-highlight-color: transparent;
+		}
+
+        .manga-controls-header, .manga-nav-footer {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 1001;
+            pointer-events: auto;
+        }
+        .manga-modal.controls-hidden .manga-controls-header {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+        .manga-modal.controls-hidden .manga-nav-footer {
+            opacity: 0;
+            transform: translateY(100%);
+            pointer-events: none;
+        }
+        
+        .manga-modal.controls-hidden .manga-zoom-controls { 
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+		.manga-controls-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: rgba(26, 26, 26, 0.85); /* Slightly more opaque */
+            border-radius: 0.375rem;
+            padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+            padding-right: calc(env(safe-area-inset-right, 0px) + 0.75rem);
+            padding-bottom: 0.5rem;
+            padding-left: calc(env(safe-area-inset-left, 0px) + 0.75rem);
+        }
+		.manga-modal .mode-btn {
+		  background: #2d2d2d;
+		  color: #fff;
+		  border: none;
+		  padding: 0.5rem 1rem;
+		  border-radius: 0.375rem;
+		  cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          -webkit-tap-highlight-color: transparent;
+		}
+        .manga-modal .mode-btn.active {
+            background: var(--primary-color);
+        }
+		.manga-modal .page-counter {
+		  margin-left: auto;
+          margin-right: 60px; /* Space for close button */
+		  color: #ccc;
+		  line-height: 1.5rem;
+          font-family: 'Inter', sans-serif;
+          user-select: none;
+		}
+
+		.manga-pages-outer-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: auto;
+        }
+        .manga-pages-outer-container.grabbing {
+            cursor: grabbing;
+        }
+		.manga-pages {
+		  width: 100%;
+          height: 100%;
+		  transition: transform 0.1s ease-out; /* For zoom/pan */
+		  overscroll-behavior: contain;
+          overflow: hidden;
+		}
+		.manga-pages.vertical {
+		  display: flex;
+		  flex-direction: column;
+		  overflow-y: auto;
+		  scroll-behavior: smooth;
+          align-items: center;
+          will-change: scroll-position;
+		}
+		.manga-pages.horizontal {
+		  display: flex;
+		  overflow-x: auto;
+		  scroll-snap-type: x mandatory;
+		  scroll-behavior: smooth;
+		  -ms-overflow-style: none;
+		  scrollbar-width: none;
+          align-items: center;
+          will-change: scroll-position;
+          direction: rtl; /* Spreads flow RTL */
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  max-width: 64%;
+		}
+		.manga-pages.horizontal::-webkit-scrollbar {
+		  display: none;
+		}
+
+        .page-spread {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            scroll-snap-align: start; /* For horizontal mode with spreads */
+            direction: ltr; /* Slots within spread are LTR for DOM order, visual order affected by parent RTL */
+            overflow: hidden; /* Clip zoomed content within spread */
+            transform-origin: center center; /* For zoom */
+            transition: transform 0.1s ease-out; /* For zoom/pan on spread */
+        }
+
+        .page-slot {
+            flex: 0 0 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Clip image within slot if necessary */
+            position: relative; /* For loading indicator */
+        }
+        .manga-pages.horizontal .page-slot {
+            padding: 0;
+            margin: 0;
+            align-items: center; /* Alinea en la parte superior */
+            min-height: 100%; /* Ocupar altura completa */
+        }
+
+        .manga-pages.horizontal .page-spread {
+            height: 100%;
+            align-items: stretch; /* Estirar slots verticalmente */
+        }
+
+		.page-item { /* Now used inside page-slot or directly in vertical mode */
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  flex-shrink: 0;
+          width: 100%;
+          height: auto;
+          position: relative; /* For loading indicator */
+          overflow: hidden;
+		}
+
+
+
+		.manga-pages img { /* Applies to images in both modes */
+		  max-width: 100%;
+		  max-height: 100%;
+		  object-fit: contain;
+          user-select: none;
+          -webkit-user-drag: none;
+          pointer-events: none; /* Critical for touch events on parent */
+          transform-origin: center center; /* For zoom on image (vertical mode) */
+          transition: transform 0.1s ease-out; /* For zoom/pan on image (vertical mode) */
+		}
+        /* Default styling for images (e.g., in vertical mode) */
+        .manga-pages.vertical .page-item img {
+             border-radius: 0rem;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        /* Style for closer images in horizontal desktop spreads */
+        .manga-pages.horizontal .page-slot .page-item img {
+            border-radius: 0;
+            box-shadow: none;
+            max-width: 71%;
+            position: fixed;
+        }
+
+
+        .page-item .loading-spinner, .page-slot .loading-spinner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            transform: none;
+        }
+        .page-item .loading-text, .page-slot .loading-text {
+            position: absolute;
+            top: calc(50% + 30px);
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        .page-item.loaded .loading-spinner, .page-slot.loaded .loading-spinner,
+        .page-item.loaded .loading-text, .page-slot.loaded .loading-text,
+        .page-item.error .loading-spinner, .page-slot.error .loading-spinner {
+            display: none;
+        }
+        .page-item.error .loading-text, .page-slot.error .loading-text {
+            display: block; /* Ensure error text is visible */
+        }
+
+        .manga-nav-footer {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(26, 26, 26, 0.85); /* Slightly more opaque */
+            border-radius: 0.375rem;
+            padding-top: 0.5rem;
+            padding-right: calc(env(safe-area-inset-right, 0px) + 0.75rem);
+            padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+            padding-left: calc(env(safe-area-inset-left, 0px) + 0.75rem);
+        }
+		.manga-modal .manga-nav-footer button {
+		  background: #2d2d2d;
+		  color: #fff;
+		  border: none;
+		  padding: 0.5rem 1rem;
+		  border-radius: 0.375rem;
+		  cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          -webkit-tap-highlight-color: transparent;
+		}
+        .manga-modal .manga-nav-footer button:disabled {
+            background: #1a1a1a;
+            color: #555;
+            cursor: not-allowed;
+        }
+
+		.no-scroll {
+		  overflow: hidden !important;
+		}
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
