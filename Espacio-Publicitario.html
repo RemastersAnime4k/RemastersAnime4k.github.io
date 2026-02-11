@@ -13,18 +13,22 @@
         :root {
             --primary-color: #ff6b6b;
             --secondary-color: #4ecdc4;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --color1: #ffcccc;
-            --color2: #ccffff;
-            --color3: #ffd9cc;
-            --color4: #ccfffc;
+            --dark-bg: #000000; 
+            --dark-card: #121212; 
+            --text-light: #ffffff;
+            --text-secondary: #cccccc;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glow-red: 0 0 15px rgba(255, 107, 107, 0.6);
+            --glow-teal: 0 0 15px rgba(78, 205, 196, 0.4);
         }
+
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
+
         body {
-            background: linear-gradient(135deg, var(--color1), var(--color2), var(--color3), var(--color4));
+            background: linear-gradient(135deg, #000000 , #1a0000);
             background-size: 400% 400%;
             animation: gradientFlow 20s ease infinite;
             font-family: 'Kanit', sans-serif;
@@ -33,14 +37,17 @@
             padding-top: 100px; /* Espacio para la navbar fija */
             min-height: 100vh;
         }
+
         /* --- Navegación Detallada (actualizada) --- */
         .detail-nav {
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             background: var(--glass-bg);
             border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 0.8rem 2rem;
             margin: 0 auto 2rem;
             margin-bottom: 2rem;
+            box-shadow: 3px 3px 6px #00000045, -3px -3px 9px rgb(0 0 0 / 25%);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,17 +57,17 @@
             left: 20px;
             right: 20px;
             z-index: 1000;
-            box-shadow: 3px 3px 6px #00000045, -3px -3px 9px rgb(0 0 0 / 25%);
-            border: 2px solid rgba(255, 255, 255, 0.3);
             font-family: 'kanit', cursive;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateY(0);
         }
+        
         .detail-nav.nav-hidden {
             transform: translateY(-150%);
         }
+        
         .site-title {
-            color: #2d3436;
+            color: var(--text-light);
             font-size: 1.8rem;
             margin: 0;
             text-decoration: none;
@@ -68,61 +75,65 @@
             user-select: none;
             font-family: 'Kanit', sans-serif;
         }
+
         .back-link {
             background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 2rem;
+            color: var(--text-light);
+            padding: 0.8rem 1.5rem;
 			margin-left: auto;
             border-radius: 30px;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 700;
-            border: 2px solid white;
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            border: 2px solid var(--text-secondary);
             font-family: 'Kanit', cursive;
         }
+
         .back-link:hover {
             transform: translateY(-2px);
-            box-shadow: 3px 3px 6px #d1d1d1, -3px -3px 6px #ffffff;
         }
+
         .ads-title {
             text-align: center;
-            color: #2d3436;
+            color: var(--text-light);
             font-size: 2rem;
             margin: 2rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        /* --- Mensaje de Recomendación --- */
+
         .advice-container {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 2px solid #fff;
+            border: 2px solid var(--primary-color);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             text-align: center;
             margin-bottom: 2rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
+
         .advice-title {
             font-family: 'Inter', cursive;
-            color: #2d3436;
+            color: var(--text-light);
             margin: 0 0 1rem 0;
             font-size: 1.4rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
+
         .advice-description {
             font-family: 'Inter', sans-serif;
-            color: #2d3436;
+            color: var(--text-light);
             font-size: 1rem;
             line-height: 1.5;
             margin-bottom: 1.5rem;
         }
+
         .help-button {
             display: inline-block;
-            background: var(--secondary-color);
+            background: rgba(255, 107, 107, 0.6);
             color: white !important;
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
@@ -133,10 +144,12 @@
             box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
             font-size: 1rem;
         }
+
         .help-button:hover {
             transform: translateY(-2px);
             box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
         }
+
         .ads-container {
             display: flex;
             flex-direction: column;
@@ -145,56 +158,61 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+
         /* --- Estilos para el Banner 728x90 --- */
         .ad-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 2px solid #fff;
+            border: 2px solid var(--primary-color);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .ad-badge {
             background: var(--primary-color);
-            color: white;
+            color: var(--text-light);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
             align-self: flex-start; /* Alinea la insignia a la izquierda */
         }
+
         .ad-title {
             font-family: 'Inter', cursive;
-            color: #2d3436;
+            color: var(--text-light);
             margin: 0 0 1rem 0;
             font-size: 1.4rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
+
         .ad-description {
             font-family: 'Inter', sans-serif;
-            color: #2d3436;
+            color: var(--text-light);
             font-size: 1rem;
             line-height: 1.5;
             margin-bottom: 1.5rem;
             text-align: center;
         }
+
         .banner-728x90-container {
             width: 100%;
             max-width: 728px; /* Limita el ancho máximo */
             height: 90px;
-            border: 2px dashed var(--secondary-color); /* Indicador visual */
+            border: 2px dashed var(--primary-color); /* Indicador visual */
             border-radius: 10px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 107, 107, 0.6);
         }
+
         .banner-728x90-container iframe {
             width: 100%;
             height: 100%;
@@ -206,22 +224,24 @@
             border: 2px dashed var(--primary-color);
             border-radius: 10px;
             overflow: hidden;
-            background-color: rgba(255, 255, 255, 0.2);
             min-height: 200px; /* Altura mínima para contenido */
             display: flex;
             align-items: center;
             justify-content: center;
+            background: rgba(255, 107, 107, 0.6);
         }
+
         .native-banner-container > div { /* Estilo para el div contenedor de Adsterra */
             width: 100%;
             text-align: center;
         }
+
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: var(--primary-color);
-            color: white;
+            color: var(--text-light);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -233,14 +253,17 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
+
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
         }
+
         .back-to-top:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
+
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -273,6 +296,7 @@
                 right: 20px;
             }
         }
+
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -364,7 +388,7 @@
                 console.warn("Error al cargar el script del Banner 728x90.");
                 var container = document.getElementById('banner728x90');
                 if (container) {
-                    container.innerHTML = '<p style="color:#2d3436;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
+                    container.innerHTML = '<p style="color:#ffffff;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
                 }
             };
             document.getElementById('banner728x90').appendChild(script);
@@ -373,7 +397,7 @@
         // --- Detección de fallo adicional para Banner 728x90 ---
         document.addEventListener('DOMContentLoaded', function() {
             const adContainerId = 'banner728x90';
-            const errorMessage = '<p style="color:#2d3436;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
+            const errorMessage = '<p style="color:#ffffff;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
             const timeoutDuration = 5000; // Tiempo de espera en milisegundos (5 segundos)
 
             const bannerContainer = document.getElementById(adContainerId);
@@ -421,7 +445,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const adContainerId = 'nativeBanner'; // ID del contenedor principal de la tarjeta
             const adsterraContainerId = 'container-92a5cd60c487a8ec687237fdb53b8531'; // ID del div de Adsterra
-            const errorMessage = '<p style="color:#2d3436;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
+            const errorMessage = '<p style="color:#ffffff;">No se pudo cargar el contenido. Desactive el bloqueador por favor</p>';
             const timeoutDuration = 5000; // Tiempo de espera en milisegundos (5 segundos)
 
             const nativeContainer = document.getElementById(adContainerId);
