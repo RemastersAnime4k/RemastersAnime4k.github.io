@@ -21,6 +21,8 @@
             --text-light: #ffffff;
             --text-secondary: #cccccc;
             --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --glow-red: 0 0 15px rgba(255, 107, 107, 0.6);
             --glow-teal: 0 0 15px rgba(78, 205, 196, 0.4);
         }
@@ -114,7 +116,7 @@
         .search-input {
             width: 90%;
             padding: 0.8rem 1.5rem;
-            border: none;
+            border: 1px solid var(--glass-border);
             border-radius: 30px;
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(5px);
@@ -143,7 +145,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 1rem;
-            border: 2px solid var(--primary-color);
+            border: 2px solid var(--glass-border);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -153,7 +155,7 @@
 			color: inherit !important;
             will-change: transform, box-shadow; /* Hint to the browser */
             isolation: isolate; /* Create a new stacking context */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px var(--glass-shadow);
             display: flex;
             flex-direction: column;
             min-height: 450px; /* Ajusta si necesitas más/menos espacio */
@@ -162,7 +164,9 @@
 
         .anime-card:hover {
             transform: translateY(-5px);
+            border-color: var(--primary-color);
             box-shadow: var(--glow-red);
+            
         }
 
         .anime-image {
@@ -325,7 +329,7 @@
             grid-column: 1 / -1;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 2px solid #fff;
+            border: 2px solid var(--primary-color);
             border-radius: 20px;
             padding: 1.5rem;
             margin: 2rem 0; /* Ensured margin is applied for standalone ads too */
@@ -333,7 +337,7 @@
             display: flex;
             gap: 1.5rem;
             align-items: center;
-            box-shadow: 1px 1px 3px #d1d1d1, -1px -1px 3px #d1d1d1;
+            box-shadow: 1px 1px 3px var(--glass-shadow), -1px -1px 3px var(--glass-shadow);
             transition: all 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             z-index: 1;
