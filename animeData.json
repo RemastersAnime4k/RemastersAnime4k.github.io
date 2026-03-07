@@ -1,5 +1,12 @@
 [
   {
+    "title": "Death Note",
+    "image": "https://i.pinimg.com/236x/a1/e6/32/a1e632a3e0354304a8ef4c375b7b3540.jpg",
+    "categories": ["anime","manga"],
+    "url": "https://remastersanime4k.github.io/animes/Death%20Note.html",
+    "description": "Death Note: Light Yagami, genio poseedor del cuaderno mortal, enfrenta al detective L en duelo psicológico."
+  },
+  {
     "title": "Tonari no Totoro Mi Vecino Totoro",
     "image": "https://i.pinimg.com/236x/85/25/0f/85250f5bbff79d805dfe6e0864c0f62c.jpg",
     "categories": ["anime"],
